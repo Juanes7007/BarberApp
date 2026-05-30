@@ -14,13 +14,12 @@ public class GestionUsuarios {
     private static final String FILE_PATH = "usuarios.json";
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-
     public static List<Usuario> obtenerUsuarios() {
         File file = new File(FILE_PATH);
         if (!file.exists()) {
             List<Usuario> defecto = new ArrayList<>();
-            defecto.add(new Usuario("admin", "1234"));
-            defecto.add(new Usuario("juanes", "barber2026"));
+            defecto.add(new Usuario("01","admin", "1234","ADMIN","none"));
+            defecto.add(new Usuario("02","juanes", "barber2026","BARBER","none"));
             guardarUsuarios(defecto);
             return defecto;
         }
@@ -43,7 +42,19 @@ public class GestionUsuarios {
         }
     }
 
-    // Método clave para validar el login
+    public static boolean registrarUsuario(Usuario nuevoUsuario) {
+        List<Usuario> usuarios = obtenerUsuarios();
+
+        for (Usuario u : usuarios) {
+            if (u.getUsername().equalsIgnoreCase(nuevoUsuario.getUsername())) {
+                return false;
+            }
+        }
+        usuarios.add(nuevoUsuario);
+        guardarUsuarios(usuarios);
+        return true;
+    }
+
     public static boolean validarLogin(String user, String pass) {
         List<Usuario> usuarios = obtenerUsuarios();
         for (Usuario u : usuarios) {

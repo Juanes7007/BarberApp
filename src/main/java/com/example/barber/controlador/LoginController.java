@@ -8,6 +8,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.input.MouseEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import java.io.IOException;
 
 public class LoginController {
 
@@ -21,7 +26,11 @@ public class LoginController {
     private Button btnentrar;
 
     @FXML
-    private Label errorlogin;
+    private Label lblErrorLogin;
+
+    @FXML
+    private Label btnRegistrarseCliente;
+
 
     @FXML
     void userLogIn(ActionEvent event) {
@@ -29,21 +38,51 @@ public class LoginController {
         String pass = password.getText();
 
         if (user.isEmpty() || pass.isEmpty()) {
-            errorlogin.setText("Por favor, llene todos los campos.");
-            errorlogin.setStyle("-fx-text-fill: #ff3333;");
+            lblErrorLogin.setText("Por favor, llene todos los campos.");
+            lblErrorLogin.setStyle("-fx-text-fill: #ff3333;");
             return;
         }
 
 
         if (GestionUsuarios.validarLogin(user, pass)) {
-            errorlogin.setText("¡Bienvenido "+user+"!");
-            errorlogin.setStyle("-fx-text-fill: #00ff00;");
+            lblErrorLogin.setText("¡Bienvenido "+user+"!");
+            lblErrorLogin.setStyle("-fx-text-fill: #00ff00;");
             Stage ventana = (Stage) btnentrar.getScene().getWindow();
             ventana.close();
         } else {
             password.clear();
-            errorlogin.setText("Usuario o contraseña incorrectos.");
-            errorlogin.setStyle("-fx-text-fill: #ff3333;");
+            lblErrorLogin.setText("Usuario o contraseña incorrectos.");
+            lblErrorLogin.setStyle("-fx-text-fill: #ff3333;");
         }
     }
+
+    @FXML
+    void userRegister(MouseEvent event) {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/barber/register.fxml"));
+            Parent root = loader.load();
+
+            Scene nuevaEscena = new Scene(root);
+
+
+            Stage nuevoStage = new Stage();
+            nuevoStage.setTitle("Registro de Cliente - BarberControl");
+            nuevoStage.setScene(nuevaEscena);
+            nuevoStage.setResizable(false);
+            nuevoStage.show();
+
+
+            Stage ventanaActual = (Stage) btnRegistrarseCliente.getScene().getWindow();
+            ventanaActual.close();
+
+        } catch (IOException e) {
+            lblErrorLogin.setText("Error al cargar la pantalla de registro.");
+            lblErrorLogin.setStyle("-fx-text-fill: #ff3333;");
+            e.printStackTrace();
+        }
+    }
+
+
+
 }

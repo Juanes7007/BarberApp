@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controlador.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controlador.LoginController">
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -50,7 +50,12 @@
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <Label fx:id="errorlogin" layoutX="161.0" layoutY="119.0" textFill="RED" />
+            <Label fx:id="lblErrorLogin" layoutX="161.0" layoutY="119.0" textFill="RED" />
+            <Label fx:id="btnRegistrarseCliente" layoutX="217.0" layoutY="368.0" onMouseClicked="#userRegister" style="-fx-underline: true;" text="Registrarse como cliente" textFill="#13ebff">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
          </children>
       </AnchorPane>
    </right>
