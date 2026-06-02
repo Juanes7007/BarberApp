@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.example.barber.controlador;
+import com.example.barber.modelo.Citas;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.FileReader;
@@ -20,7 +21,7 @@ import javafx.scene.control.*;
 
 /**
  *
- * @author DURLEY
+ * @author YO
  */
 public class ClienteController {
       @FXML
@@ -37,7 +38,7 @@ public class ClienteController {
 
     @FXML
     private Button btnAgendar;
-    /**@FXML
+    @FXML
     private TableView<Citas> tblCitas;
 
     @FXML
@@ -55,7 +56,7 @@ public class ClienteController {
     private ObservableList<Citas> listaCitas =
             FXCollections.observableArrayList();
 
-    */
+    
    
     
 }
