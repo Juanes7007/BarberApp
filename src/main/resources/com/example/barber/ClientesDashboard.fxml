@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -30,6 +32,11 @@
                     </font>
 
                 </Label>
+            <ImageView fitHeight="67.0" fitWidth="70.0" layoutX="270.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/istockphoto-1212381977-612x612.jpg" />
+               </image>
+            </ImageView>
             </children>
 
         </Pane>
@@ -108,17 +115,17 @@
 
                 <Label layoutX="20" layoutY="50" text="Historial de citas pendientes" />
 
-                <TableView fx:id="tblCitas" layoutX="20" layoutY="80" prefHeight="270" prefWidth="470">
+                <TableView fx:id="tblCitas" layoutX="14.0" layoutY="77.0" prefHeight="270" prefWidth="434.0">
 
                     <columns>
 
-                        <TableColumn fx:id="colServicio" prefWidth="120" text="Servicio" />
+                        <TableColumn fx:id="colServicio" prefWidth="84.0" text="Servicio" />
 
-                        <TableColumn fx:id="colBarbero" prefWidth="120" text="Barbero" />
+                        <TableColumn fx:id="colBarbero" prefWidth="116.0" text="Barbero" />
 
-                        <TableColumn fx:id="colFecha" prefWidth="120" text="Fecha" />
+                        <TableColumn fx:id="colFecha" prefWidth="127.0" text="Fecha" />
 
-                        <TableColumn fx:id="colHora" prefWidth="100" text="Hora" />
+                        <TableColumn fx:id="colHora" prefWidth="106.0" text="Hora" />
 
                     </columns>
 
