@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controlador.ClienteController">
+
+    <!-- Fondo -->
+    <children>
+
+        <Pane layoutX="0" layoutY="0" prefHeight="600" prefWidth="900" style="-fx-background-color:#F8F1DE;" />
+
+        <!-- Encabezado -->
+        <Pane layoutX="0" layoutY="0" prefHeight="80" prefWidth="900" style="-fx-background-color:#FF9800;">
+
+            <children>
+                <Label layoutX="340" layoutY="20" text="Panel Clientes" textFill="WHITE">
+
+                    <font>
+                        <Font size="28" />
+                    </font>
+
+                </Label>
+            </children>
+
+        </Pane>
+
+        <!-- Panel Formulario -->
+        <Pane layoutX="30" layoutY="110" prefHeight="380" prefWidth="300" style="-fx-background-color:#FFF8E1;                      -fx-border-color:#FBC02D;                      -fx-border-width:2;">
+
+            <children>
+
+                <Label layoutX="20" layoutY="20" text="AGENDAR NUEVA CITA">
+
+                    <font>
+                        <Font size="16" />
+                    </font>
+
+                </Label>
+
+                <VBox layoutX="20" layoutY="60" spacing="12">
+
+                    <children>
+
+                        <HBox spacing="10">
+                            <children>
+                                <Label prefWidth="70" text="Barbero" />
+
+                                <ComboBox fx:id="cbBarbero" prefWidth="160" />
+                            </children>
+                        </HBox>
+
+                        <HBox spacing="10">
+                            <children>
+                                <Label prefWidth="70" text="Servicio" />
+
+                                <ComboBox fx:id="cbServicio" prefWidth="160" />
+                            </children>
+                        </HBox>
+
+                        <HBox spacing="10">
+                            <children>
+                                <Label prefWidth="70" text="Fecha" />
+
+                                <DatePicker fx:id="dpFecha" prefWidth="160" />
+                            </children>
+                        </HBox>
+
+                        <HBox spacing="10">
+                            <children>
+                                <Label prefWidth="70" text="Hora" />
+
+                                <ComboBox fx:id="cbHora" prefWidth="160" />
+                            </children>
+                        </HBox>
+
+                        <Button fx:id="btnAgendar" onAction="#agendarCita" prefHeight="40" prefWidth="160" style="-fx-background-color:#FF9800;                                        -fx-text-fill:white;                                        -fx-font-weight:bold;                                        -fx-background-radius:10;" text="AGENDAR" />
+
+                    </children>
+
+                </VBox>
+
+            </children>
+
+        </Pane>
+
+        <!-- Panel Tabla -->
+        <Pane layoutX="360" layoutY="110" prefHeight="380" prefWidth="510" style="-fx-background-color:#FFF8E1;                      -fx-border-color:#FBC02D;                      -fx-border-width:2;">
+
+            <children>
+
+                <Label layoutX="20" layoutY="20" text="MIS CITAS">
+
+                    <font>
+                        <Font size="18" />
+                    </font>
+
+                </Label>
+
+                <Label layoutX="20" layoutY="50" text="Historial de citas pendientes" />
+
+                <TableView fx:id="tblCitas" layoutX="20" layoutY="80" prefHeight="270" prefWidth="470">
+
+                    <columns>
+
+                        <TableColumn fx:id="colServicio" prefWidth="120" text="Servicio" />
+
+                        <TableColumn fx:id="colBarbero" prefWidth="120" text="Barbero" />
+
+                        <TableColumn fx:id="colFecha" prefWidth="120" text="Fecha" />
+
+                        <TableColumn fx:id="colHora" prefWidth="100" text="Hora" />
+
+                    </columns>
+
+                </TableView>
+
+            </children>
+
+        </Pane>
+
+        <!-- Pie -->
+        <Label layoutX="370" layoutY="540" text="Barberia Insana">
+
+            <font>
+                <Font size="18" />
+            </font>
+
+        </Label>
+
+    </children>
+
+</AnchorPane>
