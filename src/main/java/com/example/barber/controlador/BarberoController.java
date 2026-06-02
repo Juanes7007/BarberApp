@@ -6,8 +6,8 @@ package com.example.barber.controlador;
 
 /**
  *
- * @author DURLEY
  */
+import com.example.barber.modelo.Citas;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.fxml.FXML;
@@ -19,7 +19,7 @@ import javafx.scene.control.TableView;
  * @author Admin
  */
 public class BarberoController {
-    /**
+   
     
  
     private List<Citas> todasLasCitas = new ArrayList<>();
@@ -81,5 +81,4 @@ public void actualizarEstado() {
         );
         System.out.println("Cantidad de citas: " + todasLasCitas.size());
 }
-*  */
 }

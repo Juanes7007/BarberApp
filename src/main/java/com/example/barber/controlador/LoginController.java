@@ -48,6 +48,15 @@ public class LoginController {
             lblErrorLogin.setText("¡Bienvenido "+user+"!");
             lblErrorLogin.setStyle("-fx-text-fill: #00ff00;");
             Stage ventana = (Stage) btnentrar.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/barber/ClientesDashboard.fxml"));
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException iOException) {
+            }
+Stage dashboard = new Stage();
+dashboard.setScene(new Scene(root));
+dashboard.show();
             ventana.close();
         } else {
             password.clear();
