@@ -4,12 +4,18 @@ import com.example.barber.modelo.GestionUsuarios;
 import com.example.barber.modelo.Usuario;
 import com.example.barber.modelo.Servicio;
 
+import com.example.barber.util.Sesion;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -23,6 +29,32 @@ import java.util.ResourceBundle;
 
 public class AdminController implements Initializable {
 
+    @FXML
+    private TabPane tabPanePrincipal;
+
+    @FXML
+    private Tab tabDashboard;
+
+    @FXML
+    private Tab tabBarberos;
+
+    @FXML
+    private Tab tabServicios;
+
+    @FXML
+    private Tab tabClientes;
+
+    @FXML
+    private Tab tabFacturas;
+
+    @FXML
+    private Tab tabLiquidaciones;
+
+    @FXML
+    private Tab tabHistorial;
+
+    @FXML
+    private Tab tabReportes;
     @FXML
     private TableView<Usuario> tablaContratados;
 
@@ -64,66 +96,149 @@ public class AdminController implements Initializable {
 
     @FXML
     private Label lblTotalRecaudado;
-    
-    
 
     @FXML
     private Label lblEstado;
 
-    private ObservableList<Usuario> listaBarberos =
-            FXCollections.observableArrayList();
+    private ObservableList<Usuario> listaBarberos
+            = FXCollections.observableArrayList();
 
-    private ObservableList<Usuario> listaContratados =
-            FXCollections.observableArrayList();
+    private ObservableList<Usuario> listaContratados
+            = FXCollections.observableArrayList();
 
-    private ObservableList<Servicio> listaServicios =
-            FXCollections.observableArrayList();
+    private ObservableList<Servicio> listaServicios
+            = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        colNombreBarbero.setCellValueFactory(
-                new PropertyValueFactory<>("username"));
+        Usuario usuario = Sesion.getUsuarioActual();
 
-        colTelefonoBarbero.setCellValueFactory(
-                new PropertyValueFactory<>("correo"));
+        if (usuario != null) {
 
-        colNombreContratado.setCellValueFactory(
-                new PropertyValueFactory<>("username"));
+            String tipo = usuario.getTipo().toUpperCase().trim();
+            switch (tipo) {
 
-        colTelefonoContratado.setCellValueFactory(
-                new PropertyValueFactory<>("correo"));
+                case "ADMIN":
+                    break;
 
-        colNombreServicio.setCellValueFactory(
-                new PropertyValueFactory<>("nombre"));
+                case "BARBER":
 
-        colPrecioServicio.setCellValueFactory(
-                new PropertyValueFactory<>("precio"));
+                    tabPanePrincipal.getTabs().remove(tabDashboard);
+                    tabPanePrincipal.getTabs().remove(tabBarberos);
+                    tabPanePrincipal.getTabs().remove(tabClientes);
+                    tabPanePrincipal.getTabs().remove(tabFacturas);
 
-        cargarBarberos();
+                    break;
 
-        tablaServicios.setItems(listaServicios);
+                case "CLIENTE":
 
-        Usuario contratadoPorDefecto = new Usuario(
-                "999",
-                "Juan Barber",
-                "1234",
-                "BARBER",
-                "3000000000",
-                true
-        );
+                    tabPanePrincipal.getTabs().remove(tabDashboard);
+                    tabPanePrincipal.getTabs().remove(tabBarberos);
+                    tabPanePrincipal.getTabs().remove(tabReportes);
+                    tabPanePrincipal.getTabs().remove(tabLiquidaciones);
+                
 
-        listaContratados.add(contratadoPorDefecto);
+                    break;
+            }
+            tablaBarberos.getSelectionModel()
+                    .selectedItemProperty()
+                    .addListener((obs, anterior, actual) -> {
 
-        tablaContratados.setItems(listaContratados);
+                        if (actual != null) {
+                            txtNombreBarbero.setText(actual.getUsername());
+                            txtTelefonoBarbero.setText(actual.getCorreo());
+                        }
+                    });
+
+            tablaServicios.getSelectionModel()
+                    .selectedItemProperty()
+                    .addListener((obs, anterior, actual) -> {
+
+                        if (actual != null) {
+                            txtNombreServicio.setText(actual.getNombre());
+                            txtPrecioServicio.setText(
+                                    String.valueOf(actual.getPrecio()));
+                        }
+                    });
+
+            colNombreBarbero.setCellValueFactory(
+                    new PropertyValueFactory<>("username"));
+
+            colTelefonoBarbero.setCellValueFactory(
+                    new PropertyValueFactory<>("correo"));
+
+            colNombreContratado.setCellValueFactory(
+                    new PropertyValueFactory<>("username"));
+
+            colTelefonoContratado.setCellValueFactory(
+                    new PropertyValueFactory<>("correo"));
+
+            colNombreServicio.setCellValueFactory(
+                    new PropertyValueFactory<>("nombre"));
+
+            colPrecioServicio.setCellValueFactory(
+                    new PropertyValueFactory<>("precio"));
+
+            cargarBarberos();
+
+            tablaServicios.setItems(listaServicios);
+
+            Usuario contratadoPorDefecto = new Usuario(
+                    "999",
+                    "Juan Barber",
+                    "1234",
+                    "BARBER",
+                    "3000000000",
+                    true
+            );
+
+            listaContratados.add(contratadoPorDefecto);
+
+            tablaContratados.setItems(listaContratados);
+        }
+    }
+    
+    @FXML
+    private void cerrarSesion(ActionEvent event) {
+
+        try {
+
+            Sesion.setUsuarioActual(null);
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/example/barber/login.fxml"));
+
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            Stage actual
+                    = (Stage) lblEstado.getScene().getWindow();
+
+            actual.close();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            lblEstado.setText("Error al cerrar sesión");
+        }
+    }
+    
+    @FXML
+    private void reservarServicio(ActionEvent event) {
+
+        lblEstado.setText("Servicio reservado");
     }
 
     private void cargarBarberos() {
 
         listaBarberos.clear();
 
-        List<Usuario> usuarios =
-                GestionUsuarios.obtenerUsuarios();
+        List<Usuario> usuarios
+                = GestionUsuarios.obtenerUsuarios();
 
         for (Usuario u : usuarios) {
 
@@ -139,8 +254,8 @@ public class AdminController implements Initializable {
     @FXML
     void contratarBarbero(ActionEvent event) {
 
-        Usuario seleccionado =
-                tablaBarberos.getSelectionModel()
+        Usuario seleccionado
+                = tablaBarberos.getSelectionModel()
                         .getSelectedItem();
 
         if (seleccionado == null) {
@@ -160,8 +275,8 @@ public class AdminController implements Initializable {
     @FXML
     void despedirBarbero(ActionEvent event) {
 
-        Usuario seleccionado =
-                tablaContratados.getSelectionModel()
+        Usuario seleccionado
+                = tablaContratados.getSelectionModel()
                         .getSelectedItem();
 
         if (seleccionado == null) {
@@ -178,11 +293,11 @@ public class AdminController implements Initializable {
     @FXML
     void agregarBarbero(ActionEvent event) {
 
-        String nombre =
-                txtNombreBarbero.getText().trim();
+        String nombre
+                = txtNombreBarbero.getText().trim();
 
-        String telefono =
-                txtTelefonoBarbero.getText().trim();
+        String telefono
+                = txtTelefonoBarbero.getText().trim();
 
         if (nombre.isEmpty() || telefono.isEmpty()) {
 
@@ -217,8 +332,8 @@ public class AdminController implements Initializable {
     @FXML
     void editarBarbero(ActionEvent event) {
 
-        Usuario seleccionado =
-                tablaBarberos.getSelectionModel()
+        Usuario seleccionado
+                = tablaBarberos.getSelectionModel()
                         .getSelectedItem();
 
         if (seleccionado == null) {
@@ -227,8 +342,8 @@ public class AdminController implements Initializable {
             return;
         }
 
-        List<Usuario> usuarios =
-                GestionUsuarios.obtenerUsuarios();
+        List<Usuario> usuarios
+                = GestionUsuarios.obtenerUsuarios();
 
         for (Usuario u : usuarios) {
 
@@ -249,13 +364,15 @@ public class AdminController implements Initializable {
         cargarBarberos();
 
         lblEstado.setText("Barbero actualizado");
+        txtNombreBarbero.clear();
+        txtTelefonoBarbero.clear();
     }
 
     @FXML
     void eliminarBarbero(ActionEvent event) {
 
-        Usuario seleccionado =
-                tablaBarberos.getSelectionModel()
+        Usuario seleccionado
+                = tablaBarberos.getSelectionModel()
                         .getSelectedItem();
 
         if (seleccionado == null) {
@@ -264,8 +381,8 @@ public class AdminController implements Initializable {
             return;
         }
 
-        List<Usuario> usuarios =
-                GestionUsuarios.obtenerUsuarios();
+        List<Usuario> usuarios
+                = GestionUsuarios.obtenerUsuarios();
 
         usuarios.removeIf(
                 u -> u.getId().equals(
@@ -284,15 +401,18 @@ public class AdminController implements Initializable {
 
         try {
 
-            String nombre =
-                    txtNombreServicio.getText();
+            String nombre
+                    = txtNombreServicio.getText();
 
-            double precio =
-                    Double.parseDouble(
+            double precio
+                    = Double.parseDouble(
                             txtPrecioServicio.getText());
 
-            Servicio servicio =
-                    new Servicio("1", nombre, precio);
+            Servicio servicio
+                    = new Servicio(
+                            String.valueOf(System.currentTimeMillis()),
+                            nombre,
+                            precio);
 
             listaServicios.add(servicio);
 
@@ -300,6 +420,7 @@ public class AdminController implements Initializable {
             txtPrecioServicio.clear();
 
             lblEstado.setText("Servicio agregado");
+            actualizarCaja();
 
         } catch (Exception e) {
 
@@ -310,8 +431,8 @@ public class AdminController implements Initializable {
     @FXML
     void editarServicio(ActionEvent event) {
 
-        Servicio seleccionado =
-                tablaServicios.getSelectionModel()
+        Servicio seleccionado
+                = tablaServicios.getSelectionModel()
                         .getSelectedItem();
 
         if (seleccionado == null) {
@@ -332,6 +453,9 @@ public class AdminController implements Initializable {
             tablaServicios.refresh();
 
             lblEstado.setText("Servicio actualizado");
+            actualizarCaja();
+            txtNombreServicio.clear();
+            txtPrecioServicio.clear();
 
         } catch (Exception e) {
 
@@ -342,8 +466,8 @@ public class AdminController implements Initializable {
     @FXML
     void eliminarServicio(ActionEvent event) {
 
-        Servicio seleccionado =
-                tablaServicios.getSelectionModel()
+        Servicio seleccionado
+                = tablaServicios.getSelectionModel()
                         .getSelectedItem();
 
         if (seleccionado == null) {
@@ -355,6 +479,9 @@ public class AdminController implements Initializable {
         listaServicios.remove(seleccionado);
 
         lblEstado.setText("Servicio eliminado");
+        actualizarCaja();
+        txtNombreServicio.clear();
+        txtPrecioServicio.clear();
     }
 
     @FXML
@@ -364,6 +491,17 @@ public class AdminController implements Initializable {
 
         for (Servicio s : listaServicios) {
 
+            total += s.getPrecio();
+        }
+
+        lblTotalRecaudado.setText("$ " + total);
+    }
+
+    private void actualizarCaja() {
+
+        double total = 0;
+
+        for (Servicio s : listaServicios) {
             total += s.getPrecio();
         }
 

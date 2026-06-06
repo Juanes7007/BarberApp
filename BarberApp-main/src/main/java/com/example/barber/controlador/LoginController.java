@@ -56,44 +56,20 @@ public class LoginController {
             password.clear();
             return;
         }
-        
+
         Sesion.setUsuarioActual(usuario);
+
+        System.out.println("TIPO = [" + usuario.getTipo() + "]");
 
         try {
 
-            FXMLLoader loader;
-            Stage ventanaActual = (Stage) btnentrar.getScene().getWindow();
-
-            switch (usuario.getTipo()) {
-
-                case "ADMIN":
-
-                    loader = new FXMLLoader(
-                            getClass().getResource("/com/example/barber/Admin.fxml"));
-
-                    break;
-
-                case "BARBER":
-
-                    loader = new FXMLLoader(
-                            getClass().getResource("/com/example/barber/Barbero.fxml"));
-
-                    break;
-
-                case "CLIENTE":
-
-                    loader = new FXMLLoader(
-                            getClass().getResource("/com/example/barber/Cliente.fxml"));
-
-                    break;
-
-                default:
-
-                    lblErrorLogin.setText("Tipo de usuario inválido.");
-                    return;
-            }
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/example/barber/Admin.fxml"));
 
             Parent root = loader.load();
+
+            Stage ventanaActual
+                    = (Stage) btnentrar.getScene().getWindow();
 
             Stage nuevaVentana = new Stage();
 

@@ -13,7 +13,7 @@ public class BarberApplication extends Application {
     public void start(Stage stage) throws IOException {
 
         FXMLLoader fxmlLoader =
-                new FXMLLoader(BarberApplication.class.getResource("ClientesView.fxml"));
+                new FXMLLoader(BarberApplication.class.getResource("login.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 700, 500);
 

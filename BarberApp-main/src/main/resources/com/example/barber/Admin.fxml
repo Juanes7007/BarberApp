@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
 <BorderPane prefHeight="700.0"
-            prefWidth="1100.0"
+            prefWidth="1200.0"
             stylesheets="@style.css"
             xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
@@ -23,10 +16,22 @@
 
             <children>
 
-                <Label layoutX="30.0"
-                       layoutY="22.0"
-                       text="VENTANA DE ADMINISTRADOR"
+                <Label layoutX="20.0"
+                       layoutY="20.0"
+                       text="BARBER CONTROL"
                        styleClass="header-title"/>
+                
+                 <Button fx:id="btnCerrarSesion"
+                       text="Cerrar Sesión"
+                       layoutX="1050"
+                       layoutY="30"
+                       onAction="#cerrarSesion"/>
+                 
+                <Label fx:id="lblEstado"
+                       layoutX="850.0"
+                       layoutY="30.0"
+                       styleClass="label-gold"
+                       text="Sistema listo"/>
 
             </children>
 
@@ -35,120 +40,130 @@
 
     <center>
 
-        <TabPane prefHeight="620.0"
-                 prefWidth="1100.0">
+        <TabPane fx:id="tabPanePrincipal">
 
             <tabs>
 
-                
-                <Tab text="Barberos">
+                <!-- DASHBOARD -->
+
+                <Tab fx:id="tabDashboard"
+                     text="Dashboard">
 
                     <AnchorPane style="-fx-background-color:#171717;">
 
                         <children>
 
-                            <Label layoutX="40.0"
-                                   layoutY="35.0"
+                            <Label layoutX="50"
+                                   layoutY="40"
+                                   text="Resumen General"
+                                   styleClass="header-title"/>
+
+                            <Label layoutX="50"
+                                   layoutY="120"
+                                   text="Total Recaudado"
+                                   styleClass="label-gold"/>
+
+                            <Label fx:id="lblTotalRecaudado"
+                                   layoutX="50"
+                                   layoutY="160"
+                                   text="0"
+                                   styleClass="total-label"/>
+
+                        </children>
+
+                    </AnchorPane>
+
+                </Tab>
+
+                <!-- BARBEROS -->
+
+                <Tab fx:id="tabBarberos"
+                     text="Barberos">
+
+                    <AnchorPane style="-fx-background-color:#171717;">
+
+                        <children>
+
+                            <Label layoutX="30"
+                                   layoutY="30"
                                    text="Nombre"
                                    styleClass="label-gold"/>
 
                             <TextField fx:id="txtNombreBarbero"
-                                       layoutX="130.0"
-                                       layoutY="30.0"
-                                       prefWidth="260.0"
-                                       promptText="Nombre del barbero"/>
+                                       layoutX="120"
+                                       layoutY="25"
+                                       prefWidth="250"/>
 
-                            <Label layoutX="40.0"
-                                   layoutY="90.0"
-                                   text="Telefono"
+                            <Label layoutX="30"
+                                   layoutY="80"
+                                   text="Correo"
                                    styleClass="label-gold"/>
 
                             <TextField fx:id="txtTelefonoBarbero"
-                                       layoutX="130.0"
-                                       layoutY="85.0"
-                                       prefWidth="260.0"
-                                       promptText="Telefono"/>
+                                       layoutX="120"
+                                       layoutY="75"
+                                       prefWidth="250"/>
 
-                            <Button fx:id="btnAgregarBarbero"
-                                    layoutX="40.0"
-                                    layoutY="150.0"
-                                    prefWidth="100.0"
-                                    text="Agregar"
+                            <Button text="Agregar"
+                                    layoutX="30"
+                                    layoutY="130"
                                     onAction="#agregarBarbero"/>
 
-                            <Button fx:id="btnEditarBarbero"
-                                    layoutX="150.0"
-                                    layoutY="150.0"
-                                    prefWidth="100.0"
-                                    text="Editar"
+                            <Button text="Editar"
+                                    layoutX="140"
+                                    layoutY="130"
                                     onAction="#editarBarbero"/>
 
-                            <Button fx:id="btnEliminarBarbero"
-                                    layoutX="260.0"
-                                    layoutY="150.0"
-                                    prefWidth="100.0"
-                                    text="Eliminar"
+                            <Button text="Eliminar"
+                                    layoutX="250"
+                                    layoutY="130"
                                     onAction="#eliminarBarbero"/>
 
-                            <Button fx:id="btnContratarBarbero"
-                                    layoutX="370.0"
-                                    layoutY="150.0"
-                                    prefWidth="100.0"
-                                    text="Contratar"
+                            <Button text="Contratar"
+                                    layoutX="360"
+                                    layoutY="130"
                                     onAction="#contratarBarbero"/>
 
-                            <Button fx:id="btnDespedirBarbero"
-                                    layoutX="480.0"
-                                    layoutY="150.0"
-                                    prefWidth="100.0"
-                                    text="Despedir"
+                            <Button text="Despedir"
+                                    layoutX="480"
+                                    layoutY="130"
                                     onAction="#despedirBarbero"/>
 
-                            <Label layoutX="40.0"
-                                   layoutY="200.0"
-                                   text="Barberos disponibles"
-                                   styleClass="label-gold"/>
-
                             <TableView fx:id="tablaBarberos"
-                                       layoutX="40.0"
-                                       layoutY="230.0"
-                                       prefHeight="300.0"
-                                       prefWidth="480.0">
+                                       layoutX="30"
+                                       layoutY="200"
+                                       prefWidth="500"
+                                       prefHeight="350">
 
                                 <columns>
 
                                     <TableColumn fx:id="colNombreBarbero"
                                                  text="Nombre"
-                                                 prefWidth="240.0"/>
+                                                 prefWidth="250"/>
 
                                     <TableColumn fx:id="colTelefonoBarbero"
-                                                 text="Telefono"
-                                                 prefWidth="240.0"/>
+                                                 text="Correo"
+                                                 prefWidth="250"/>
 
                                 </columns>
 
                             </TableView>
 
-                            <Label layoutX="560.0"
-                                   layoutY="200.0"
-                                   text="Barberos contratados"
-                                   styleClass="label-gold"/>
-
                             <TableView fx:id="tablaContratados"
-                                       layoutX="560.0"
-                                       layoutY="230.0"
-                                       prefHeight="300.0"
-                                       prefWidth="480.0">
+                                       layoutX="600"
+                                       layoutY="200"
+                                       prefWidth="500"
+                                       prefHeight="350">
 
                                 <columns>
 
                                     <TableColumn fx:id="colNombreContratado"
                                                  text="Nombre"
-                                                 prefWidth="240.0"/>
+                                                 prefWidth="250"/>
 
                                     <TableColumn fx:id="colTelefonoContratado"
-                                                 text="Telefono"
-                                                 prefWidth="240.0"/>
+                                                 text="Correo"
+                                                 prefWidth="250"/>
 
                                 </columns>
 
@@ -160,70 +175,111 @@
 
                 </Tab>
 
-                <Tab text="Servicios">
+                <!-- CLIENTES -->
+
+                <Tab fx:id="tabClientes" text="Clientes">
+
+                    <AnchorPane>
+
+                        <children>
+
+                            <TableView fx:id="tablaClientes"
+                                       layoutX="20"
+                                       layoutY="20"
+                                       prefWidth="900"
+                                       prefHeight="400">
+
+                                <columns>
+
+                                    <TableColumn fx:id="colIdCliente"
+                                                 text="ID"
+                                                 prefWidth="200"/>
+
+                                    <TableColumn fx:id="colNombreCliente"
+                                                 text="Nombre"
+                                                 prefWidth="250"/>
+
+                                    <TableColumn fx:id="colTelefonoCliente"
+                                                 text="Telefono"
+                                                 prefWidth="200"/>
+
+                                    <TableColumn fx:id="colCorreoCliente"
+                                                 text="Correo"
+                                                 prefWidth="250"/>
+
+                                </columns>
+
+                            </TableView>
+
+                        </children>
+
+                    </AnchorPane>
+
+                </Tab>
+                <!-- SERVICIOS -->
+
+                <Tab fx:id="tabServicios"
+                     text="Servicios">
 
                     <AnchorPane style="-fx-background-color:#171717;">
 
                         <children>
 
-                            <Label layoutX="40.0"
-                                   layoutY="35.0"
+                            <Label layoutX="30"
+                                   layoutY="30"
                                    text="Servicio"
                                    styleClass="label-gold"/>
 
                             <TextField fx:id="txtNombreServicio"
-                                       layoutX="130.0"
-                                       layoutY="30.0"
-                                       prefWidth="260.0"
-                                       promptText="Nombre del servicio"/>
+                                       layoutX="120"
+                                       layoutY="25"
+                                       prefWidth="250"/>
 
-                            <Label layoutX="40.0"
-                                   layoutY="90.0"
+                            <Label layoutX="30"
+                                   layoutY="80"
                                    text="Precio"
                                    styleClass="label-gold"/>
 
                             <TextField fx:id="txtPrecioServicio"
-                                       layoutX="130.0"
-                                       layoutY="85.0"
-                                       prefWidth="260.0"
-                                       promptText="Precio"/>
+                                       layoutX="120"
+                                       layoutY="75"
+                                       prefWidth="250"/>
 
-                            <Button fx:id="btnAgregarServicio"
-                                    layoutX="40.0"
-                                    layoutY="150.0"
-                                    prefWidth="120.0"
-                                    text="Agregar"
+                            <Button text="Agregar"
+                                    layoutX="30"
+                                    layoutY="130"
                                     onAction="#agregarServicio"/>
 
-                            <Button fx:id="btnEditarServicio"
-                                    layoutX="180.0"
-                                    layoutY="150.0"
-                                    prefWidth="120.0"
-                                    text="Editar"
+                            <Button text="Editar"
+                                    layoutX="150"
+                                    layoutY="130"
                                     onAction="#editarServicio"/>
 
-                            <Button fx:id="btnEliminarServicio"
-                                    layoutX="320.0"
-                                    layoutY="150.0"
-                                    prefWidth="120.0"
-                                    text="Eliminar"
+                            <Button text="Eliminar"
+                                    layoutX="270"
+                                    layoutY="130"
                                     onAction="#eliminarServicio"/>
 
+                            <Button text="Reservar"
+                                    layoutX="390"
+                                    layoutY="130"
+                                    onAction="#reservarServicio"/>
+
                             <TableView fx:id="tablaServicios"
-                                       layoutX="40.0"
-                                       layoutY="230.0"
-                                       prefHeight="330.0"
-                                       prefWidth="1000.0">
+                                       layoutX="30"
+                                       layoutY="200"
+                                       prefWidth="1050"
+                                       prefHeight="330">
 
                                 <columns>
 
                                     <TableColumn fx:id="colNombreServicio"
                                                  text="Servicio"
-                                                 prefWidth="500.0"/>
+                                                 prefWidth="500"/>
 
                                     <TableColumn fx:id="colPrecioServicio"
                                                  text="Precio"
-                                                 prefWidth="500.0"/>
+                                                 prefWidth="550"/>
 
                                 </columns>
 
@@ -235,38 +291,163 @@
 
                 </Tab>
 
-                <Tab text="Reportes">
+                <!-- CITAS -->
+
+                <Tab fx:id="tabCitas"
+                     text="Citas">
 
                     <AnchorPane style="-fx-background-color:#171717;">
 
                         <children>
 
-                            <Label layoutX="350.0"
-                                   layoutY="90.0"
-                                   text="TOTAL RECAUDADO HOY"
-                                   styleClass="label-gold"/>
-
-                            <Label fx:id="lblTotalRecaudado"
-                                   layoutX="470.0"
-                                   layoutY="170.0"
-                                   text="0"
-                                   styleClass="total-label"/>
-
-                            <Button layoutX="430.0"
-                                    layoutY="270.0"
-                                    prefWidth="220.0"
-                                    text="Actualizar Reporte"
-                                    onAction="#calcularCaja"/>
-
-                            <Label fx:id="lblEstado"
-                                   layoutX="40.0"
-                                   layoutY="350.0"/>
+                            <TableView fx:id="tablaCitas"
+                                       layoutX="30"
+                                       layoutY="30"
+                                       prefWidth="1050"
+                                       prefHeight="500"/>
 
                         </children>
 
                     </AnchorPane>
 
                 </Tab>
+
+                <!-- VENTAS -->
+
+                <Tab fx:id="tabVentas"
+                     text="Ventas">
+
+                    <AnchorPane style="-fx-background-color:#171717;">
+
+                        <children>
+
+                            <TableView fx:id="tablaVentas"
+                                       layoutX="30"
+                                       layoutY="30"
+                                       prefWidth="1050"
+                                       prefHeight="500"/>
+
+                        </children>
+
+                    </AnchorPane>
+
+                </Tab>
+
+                <!-- LIQUIDACIONES -->
+
+                <Tab fx:id="tabLiquidaciones"
+                     text="Liquidaciones">
+
+                    <AnchorPane>
+
+                        <children>
+
+                            <TableView fx:id="tablaLiquidaciones"
+                                       layoutX="20"
+                                       layoutY="20"
+                                       prefWidth="900"
+                                       prefHeight="400">
+
+                                <columns>
+
+                                    <TableColumn fx:id="colBarberoLiquidacion"
+                                                 text="Barbero"/>
+
+                                    <TableColumn fx:id="colTotalProducido"
+                                                 text="Producido"/>
+
+                                    <TableColumn fx:id="colComision"
+                                                 text="Comisión"/>
+
+                                    <TableColumn fx:id="colPagoFinal"
+                                                 text="Pago Final"/>
+
+                                </columns>
+
+                            </TableView>
+
+                        </children>
+
+                    </AnchorPane>
+
+                </Tab>
+                
+                <Tab fx:id="tabHistorial" text="Servicios Realizados">
+
+                    <AnchorPane>
+
+                        <children>
+
+                            <TableView fx:id="tablaHistorial"
+                                       layoutX="20"
+                                       layoutY="20"
+                                       prefWidth="1000"
+                                       prefHeight="450">
+
+                                <columns>
+
+                                    <TableColumn fx:id="colFecha"
+                                                 text="Fecha"/>
+
+                                    <TableColumn fx:id="colCliente"
+                                                 text="Cliente"/>
+
+                                    <TableColumn fx:id="colBarbero"
+                                                 text="Barbero"/>
+
+                                    <TableColumn fx:id="colServicio"
+                                                 text="Servicio"/>
+
+                                    <TableColumn fx:id="colValor"
+                                                 text="Valor"/>
+
+                                </columns>
+
+                            </TableView>
+
+                        </children>
+
+                    </AnchorPane>
+
+                </Tab>
+
+                <Tab fx:id="tabFacturas" text="Facturas">
+
+                    <AnchorPane>
+
+                        <children>
+
+                            <TableView fx:id="tablaFacturas"
+                                       layoutX="20"
+                                       layoutY="20"
+                                       prefWidth="900"
+                                       prefHeight="400">
+
+                                <columns>
+
+                                    <TableColumn fx:id="colFacturaId"
+                                                 text="ID"/>
+
+                                    <TableColumn fx:id="colFacturaCliente"
+                                                 text="Cliente"/>
+
+                                    <TableColumn fx:id="colFacturaFecha"
+                                                 text="Fecha"/>
+
+                                    <TableColumn fx:id="colFacturaTotal"
+                                                 text="Total"/>
+
+                                </columns>
+
+                            </TableView>
+
+                        </children>
+
+                    </AnchorPane>
+
+                </Tab>
+
+
 
             </tabs>
 
