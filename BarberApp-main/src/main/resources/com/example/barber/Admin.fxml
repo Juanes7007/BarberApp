@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="700.0"
+            prefWidth="1100.0"
+            stylesheets="@style.css"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.barber.controlador.AdminController">
+
+    <top>
+        <AnchorPane prefHeight="80.0"
+                    styleClass="header-pane">
+
+            <children>
+
+                <Label layoutX="30.0"
+                       layoutY="22.0"
+                       text="VENTANA DE ADMINISTRADOR"
+                       styleClass="header-title"/>
+
+            </children>
+
+        </AnchorPane>
+    </top>
+
+    <center>
+
+        <TabPane prefHeight="620.0"
+                 prefWidth="1100.0">
+
+            <tabs>
+
+                
+                <Tab text="Barberos">
+
+                    <AnchorPane style="-fx-background-color:#171717;">
+
+                        <children>
+
+                            <Label layoutX="40.0"
+                                   layoutY="35.0"
+                                   text="Nombre"
+                                   styleClass="label-gold"/>
+
+                            <TextField fx:id="txtNombreBarbero"
+                                       layoutX="130.0"
+                                       layoutY="30.0"
+                                       prefWidth="260.0"
+                                       promptText="Nombre del barbero"/>
+
+                            <Label layoutX="40.0"
+                                   layoutY="90.0"
+                                   text="Telefono"
+                                   styleClass="label-gold"/>
+
+                            <TextField fx:id="txtTelefonoBarbero"
+                                       layoutX="130.0"
+                                       layoutY="85.0"
+                                       prefWidth="260.0"
+                                       promptText="Telefono"/>
+
+                            <Button fx:id="btnAgregarBarbero"
+                                    layoutX="40.0"
+                                    layoutY="150.0"
+                                    prefWidth="100.0"
+                                    text="Agregar"
+                                    onAction="#agregarBarbero"/>
+
+                            <Button fx:id="btnEditarBarbero"
+                                    layoutX="150.0"
+                                    layoutY="150.0"
+                                    prefWidth="100.0"
+                                    text="Editar"
+                                    onAction="#editarBarbero"/>
+
+                            <Button fx:id="btnEliminarBarbero"
+                                    layoutX="260.0"
+                                    layoutY="150.0"
+                                    prefWidth="100.0"
+                                    text="Eliminar"
+                                    onAction="#eliminarBarbero"/>
+
+                            <Button fx:id="btnContratarBarbero"
+                                    layoutX="370.0"
+                                    layoutY="150.0"
+                                    prefWidth="100.0"
+                                    text="Contratar"
+                                    onAction="#contratarBarbero"/>
+
+                            <Button fx:id="btnDespedirBarbero"
+                                    layoutX="480.0"
+                                    layoutY="150.0"
+                                    prefWidth="100.0"
+                                    text="Despedir"
+                                    onAction="#despedirBarbero"/>
+
+                            <Label layoutX="40.0"
+                                   layoutY="200.0"
+                                   text="Barberos disponibles"
+                                   styleClass="label-gold"/>
+
+                            <TableView fx:id="tablaBarberos"
+                                       layoutX="40.0"
+                                       layoutY="230.0"
+                                       prefHeight="300.0"
+                                       prefWidth="480.0">
+
+                                <columns>
+
+                                    <TableColumn fx:id="colNombreBarbero"
+                                                 text="Nombre"
+                                                 prefWidth="240.0"/>
+
+                                    <TableColumn fx:id="colTelefonoBarbero"
+                                                 text="Telefono"
+                                                 prefWidth="240.0"/>
+
+                                </columns>
+
+                            </TableView>
+
+                            <Label layoutX="560.0"
+                                   layoutY="200.0"
+                                   text="Barberos contratados"
+                                   styleClass="label-gold"/>
+
+                            <TableView fx:id="tablaContratados"
+                                       layoutX="560.0"
+                                       layoutY="230.0"
+                                       prefHeight="300.0"
+                                       prefWidth="480.0">
+
+                                <columns>
+
+                                    <TableColumn fx:id="colNombreContratado"
+                                                 text="Nombre"
+                                                 prefWidth="240.0"/>
+
+                                    <TableColumn fx:id="colTelefonoContratado"
+                                                 text="Telefono"
+                                                 prefWidth="240.0"/>
+
+                                </columns>
+
+                            </TableView>
+
+                        </children>
+
+                    </AnchorPane>
+
+                </Tab>
+
+                <Tab text="Servicios">
+
+                    <AnchorPane style="-fx-background-color:#171717;">
+
+                        <children>
+
+                            <Label layoutX="40.0"
+                                   layoutY="35.0"
+                                   text="Servicio"
+                                   styleClass="label-gold"/>
+
+                            <TextField fx:id="txtNombreServicio"
+                                       layoutX="130.0"
+                                       layoutY="30.0"
+                                       prefWidth="260.0"
+                                       promptText="Nombre del servicio"/>
+
+                            <Label layoutX="40.0"
+                                   layoutY="90.0"
+                                   text="Precio"
+                                   styleClass="label-gold"/>
+
+                            <TextField fx:id="txtPrecioServicio"
+                                       layoutX="130.0"
+                                       layoutY="85.0"
+                                       prefWidth="260.0"
+                                       promptText="Precio"/>
+
+                            <Button fx:id="btnAgregarServicio"
+                                    layoutX="40.0"
+                                    layoutY="150.0"
+                                    prefWidth="120.0"
+                                    text="Agregar"
+                                    onAction="#agregarServicio"/>
+
+                            <Button fx:id="btnEditarServicio"
+                                    layoutX="180.0"
+                                    layoutY="150.0"
+                                    prefWidth="120.0"
+                                    text="Editar"
+                                    onAction="#editarServicio"/>
+
+                            <Button fx:id="btnEliminarServicio"
+                                    layoutX="320.0"
+                                    layoutY="150.0"
+                                    prefWidth="120.0"
+                                    text="Eliminar"
+                                    onAction="#eliminarServicio"/>
+
+                            <TableView fx:id="tablaServicios"
+                                       layoutX="40.0"
+                                       layoutY="230.0"
+                                       prefHeight="330.0"
+                                       prefWidth="1000.0">
+
+                                <columns>
+
+                                    <TableColumn fx:id="colNombreServicio"
+                                                 text="Servicio"
+                                                 prefWidth="500.0"/>
+
+                                    <TableColumn fx:id="colPrecioServicio"
+                                                 text="Precio"
+                                                 prefWidth="500.0"/>
+
+                                </columns>
+
+                            </TableView>
+
+                        </children>
+
+                    </AnchorPane>
+
+                </Tab>
+
+                <Tab text="Reportes">
+
+                    <AnchorPane style="-fx-background-color:#171717;">
+
+                        <children>
+
+                            <Label layoutX="350.0"
+                                   layoutY="90.0"
+                                   text="TOTAL RECAUDADO HOY"
+                                   styleClass="label-gold"/>
+
+                            <Label fx:id="lblTotalRecaudado"
+                                   layoutX="470.0"
+                                   layoutY="170.0"
+                                   text="0"
+                                   styleClass="total-label"/>
+
+                            <Button layoutX="430.0"
+                                    layoutY="270.0"
+                                    prefWidth="220.0"
+                                    text="Actualizar Reporte"
+                                    onAction="#calcularCaja"/>
+
+                            <Label fx:id="lblEstado"
+                                   layoutX="40.0"
+                                   layoutY="350.0"/>
+
+                        </children>
+
+                    </AnchorPane>
+
+                </Tab>
+
+            </tabs>
+
+        </TabPane>
+
+    </center>
+
+</BorderPane>

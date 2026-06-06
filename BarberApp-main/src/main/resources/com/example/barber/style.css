@@ -1,0 +1,203 @@
+
+.root{
+    -fx-background-color: #171717;
+}
+
+/* ENCABEZADO */
+.header-pane{
+    -fx-background-color: linear-gradient(to right,#111111,#202020);
+}
+
+.header-title{
+    -fx-text-fill: #ffc900;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+}
+
+/* TABS */
+
+.tab-pane{
+    -fx-background-color: #171717;
+}
+
+.tab-pane .tab-header-area .tab-header-background{
+    -fx-background-color: #171717;
+}
+
+.tab{
+    -fx-background-color: #252525;
+    -fx-background-radius: 8 8 0 0;
+}
+
+.tab:selected{
+    -fx-background-color: #ffc900;
+}
+
+.tab .tab-label{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label{
+    -fx-text-fill: black;
+}
+
+/* PANEL */
+
+.card{
+    -fx-background-color: #1f1f1f;
+    -fx-background-radius: 15;
+    -fx-border-color: #2f2f2f;
+    -fx-border-radius: 15;
+}
+
+/* LABELS */
+
+.label-gold{
+    -fx-text-fill: #ffc900;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* CAMPOS */
+
+.text-field{
+    -fx-background-color: #2a2a2a;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #888888;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #404040;
+}
+
+.text-field:focused{
+    -fx-border-color: #ffc900;
+}
+
+/* BOTONES */
+
+.button{
+    -fx-background-color: #ffc900;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.button:hover{
+    -fx-background-color: #ffd633;
+}
+
+/* TABLA */
+
+.table-view{
+    -fx-background-color: #1f1f1f;
+    -fx-border-color: #303030;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: #ffc900;
+}
+
+.table-view .column-header{
+    -fx-background-color: #ffc900;
+}
+
+.table-view .column-header .label{
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell{
+    -fx-background-color: #222222;
+}
+
+.table-row-cell:odd{
+    -fx-background-color: #292929;
+}
+
+.table-row-cell:selected{
+    -fx-background-color: #444444;
+}
+
+.table-cell{
+    -fx-text-fill: white;
+}
+
+/* REPORTES */
+
+.total-label{
+    -fx-text-fill: white;
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+}
+.table-view {
+    -fx-background-color: #1f1f1f;
+    -fx-control-inner-background: #1f1f1f;
+    -fx-table-cell-border-color: #2b2b2b;
+    -fx-border-color: #2b2b2b;
+}
+
+.table-row-cell {
+    -fx-background-color: #1f1f1f;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #242424;
+}
+
+.table-cell {
+    -fx-text-fill: white;
+    -fx-border-color: transparent #2b2b2b transparent transparent;
+}
+
+/* ENCABEZADOS */
+
+.table-view .column-header-background {
+    -fx-background-color: #ffc900;
+}
+
+.table-view .column-header {
+    -fx-background-color: #ffc900;
+    -fx-border-color: #ffc900;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+
+/* ESQUINA SUPERIOR DERECHA */
+
+.table-view .filler {
+    -fx-background-color: #ffc900;
+}
+
+/* SCROLLBAR */
+
+.scroll-bar {
+    -fx-background-color: #1f1f1f;
+}
+
+.scroll-bar .track {
+    -fx-background-color: #1f1f1f;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #444444;
+    -fx-background-radius: 10;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #666666;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: #1f1f1f;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-background-color: #1f1f1f;
+}
