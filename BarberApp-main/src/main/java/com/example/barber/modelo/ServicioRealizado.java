@@ -1,4 +1,3 @@
-
 package com.example.barber.modelo;
 
 import java.time.LocalDate;
@@ -21,11 +20,11 @@ public class ServicioRealizado {
     }
 
     public ServicioRealizado(String id,
-                             Cliente cliente,
-                             Usuario barbero,
-                             Servicio servicio,
-                             LocalDate fecha,
-                             double valor) {
+            Cliente cliente,
+            Usuario barbero,
+            Servicio servicio,
+            LocalDate fecha,
+            double valor) {
 
         this.id = id;
         this.cliente = cliente;
@@ -36,7 +35,6 @@ public class ServicioRealizado {
     }
 
     // getters y setters
-
     public String getId() {
         return id;
     }

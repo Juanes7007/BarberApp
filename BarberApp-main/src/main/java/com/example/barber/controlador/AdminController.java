@@ -49,10 +49,14 @@ public class AdminController implements Initializable {
 
     @FXML
     private Tab tabLiquidaciones;
-
+    
     @FXML
     private Tab tabHistorial;
 
+     @FXML
+    private Tab tabCitas;
+      
+    
     @FXML
     private Tab tabReportes;
     @FXML
@@ -137,8 +141,8 @@ public class AdminController implements Initializable {
                     tabPanePrincipal.getTabs().remove(tabBarberos);
                     tabPanePrincipal.getTabs().remove(tabReportes);
                     tabPanePrincipal.getTabs().remove(tabLiquidaciones);
-                
-
+                     tabPanePrincipal.getTabs().remove(tabClientes);
+                       tabPanePrincipal.getTabs().remove(tabCitas);
                     break;
             }
             tablaBarberos.getSelectionModel()

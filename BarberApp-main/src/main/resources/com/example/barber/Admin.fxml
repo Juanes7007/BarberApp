@@ -3,6 +3,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
 <BorderPane prefHeight="700.0"
             prefWidth="1200.0"
             stylesheets="@style.css"
@@ -21,11 +33,11 @@
                        text="BARBER CONTROL"
                        styleClass="header-title"/>
                 
-                 <Button fx:id="btnCerrarSesion"
-                       text="Cerrar Sesión"
-                       layoutX="1050"
-                       layoutY="30"
-                       onAction="#cerrarSesion"/>
+                <Button fx:id="btnCerrarSesion"
+                         text="Cerrar Sesión"
+                         layoutX="1050"
+                         layoutY="30"
+                         onAction="#cerrarSesion"/>
                  
                 <Label fx:id="lblEstado"
                        layoutX="850.0"
@@ -39,7 +51,7 @@
     </top>
 
     <center>
-
+   
         <TabPane fx:id="tabPanePrincipal">
 
             <tabs>
@@ -298,15 +310,47 @@
 
                     <AnchorPane style="-fx-background-color:#171717;">
 
-                        <children>
-
-                            <TableView fx:id="tablaCitas"
-                                       layoutX="30"
-                                       layoutY="30"
-                                       prefWidth="1050"
-                                       prefHeight="500"/>
-
-                        </children>
+                        <VBox spacing="10" style="-fx-background-color: #ffc900;" xmlns:fx="http://javafx.com/fxml">
+                            <Label text="Agenda del día">
+                                <font>
+                                    <Font name="Bell MT Italic" size="36.0" />
+                                </font>
+                                <padding>
+                                    <Insets left="250.0" />
+                                </padding>
+                            </Label>
+                            <HBox spacing="10">
+                                <DatePicker fx:id="dpFecha">
+                                    <HBox.margin>
+                                        <Insets left="200.0" />
+                                    </HBox.margin>
+                                </DatePicker>
+                                <Button style="-fx-cursor: hand;" text="Filtrar" textAlignment="CENTER">
+                                    <padding>
+                                        <Insets left="15.0" />
+                                    </padding>
+                                    <HBox.margin>
+                                        <Insets left="50.0" />
+                                    </HBox.margin>
+                                </Button>
+                            </HBox>
+                            <TableView fx:id="citas" cache="true" prefHeight="400.0" prefWidth="632.0" style="-fx-background-color: #171717;">
+                                <columns>
+                                    <TableColumn fx:id="BarHora" text="Hora" />
+     
+                                    <TableColumn fx:id="BarCliente" text="Cliente" />
+      
+                                    <TableColumn fx:id="BarServicio" text="Servicio" />
+       
+                                    <TableColumn fx:id="BarEstado" text="Estado" />
+      
+                                    <TableColumn fx:id="BarAccion" text="Accion" />
+                                </columns>
+                                <VBox.margin>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                </VBox.margin>
+                            </TableView>
+                        </VBox>
 
                     </AnchorPane>
 
