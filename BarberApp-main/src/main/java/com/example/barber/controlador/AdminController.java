@@ -291,8 +291,7 @@ public class AdminController implements Initializable {
 
                     btnCompletar.setOnAction(e -> {
                         CitasDTO cita = getTableView().getItems().get(getIndex());
-
-                        // Modifica el objeto
+                        
                         cita.setEstado("Completado");
 
                         
@@ -314,7 +313,7 @@ public class AdminController implements Initializable {
 
                         cita.setEstado("Completado");
 
-                        //  guarda al archivo
+                        //  guarda en el JSON
                         List<CitasDTO> lista = GestionCitas.obtenerCitas();
                         for (CitasDTO c : lista) {
                             if (c.getId().equals(cita.getId())) {
