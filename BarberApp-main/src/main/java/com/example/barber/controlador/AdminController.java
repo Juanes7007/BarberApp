@@ -292,10 +292,10 @@ public class AdminController implements Initializable {
                     btnCompletar.setOnAction(e -> {
                         CitasDTO cita = getTableView().getItems().get(getIndex());
 
-                        // Modifica el objeto que YA ESTÁ en la tabla
+                        // Modifica el objeto
                         cita.setEstado("Completado");
 
-                        // Ahora guarda al archivo
+                        
                         List<CitasDTO> lista = GestionCitas.obtenerCitas();
                         for (CitasDTO c : lista) {
                             if (c.getId().equals(cita.getId())) {
@@ -305,7 +305,7 @@ public class AdminController implements Initializable {
                         }
                         GestionCitas.guardarCitas(lista);
 
-                        Tacitas.refresh(); // Ahora sí refresca porque el objeto en memoria ya cambió
+                        Tacitas.refresh(); 
                     });
 
                     btnCancelar.setOnAction(e -> {
@@ -314,7 +314,7 @@ public class AdminController implements Initializable {
 
                         cita.setEstado("Completado");
 
-                        // Ahora guarda al archivo
+                        //  guarda al archivo
                         List<CitasDTO> lista = GestionCitas.obtenerCitas();
                         for (CitasDTO c : lista) {
                             if (c.getId().equals(cita.getId())) {
