@@ -1,49 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane prefHeight="700.0"
-            prefWidth="1200.0"
-            stylesheets="@style.css"
-            xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.barber.controlador.AdminController">
+<BorderPane prefHeight="700.0" prefWidth="1200.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controlador.AdminController">
 
     <top>
-        <AnchorPane prefHeight="80.0"
-                    styleClass="header-pane">
+        <AnchorPane prefHeight="80.0" styleClass="header-pane">
 
             <children>
 
-                <Label layoutX="20.0"
-                       layoutY="20.0"
-                       text="BARBER CONTROL"
-                       styleClass="header-title"/>
+                <Label layoutX="20.0" layoutY="20.0" styleClass="header-title" text="BARBER CONTROL" />
                 
-                <Button fx:id="btnCerrarSesion"
-                         text="Cerrar Sesión"
-                         layoutX="1050"
-                         layoutY="30"
-                         onAction="#cerrarSesion"/>
+                <Button fx:id="btnCerrarSesion" layoutX="1050" layoutY="30" onAction="#cerrarSesion" text="Cerrar Sesión" />
                  
-                <Label fx:id="lblEstado"
-                       layoutX="850.0"
-                       layoutY="30.0"
-                       styleClass="label-gold"
-                       text="Sistema listo"/>
+                <Label fx:id="lblEstado" layoutX="850.0" layoutY="30.0" styleClass="label-gold" text="Sistema listo" />
 
             </children>
 
@@ -58,28 +42,17 @@
 
                 <!-- DASHBOARD -->
 
-                <Tab fx:id="tabDashboard"
-                     text="Dashboard">
+                <Tab fx:id="tabDashboard" text="Dashboard">
 
                     <AnchorPane style="-fx-background-color:#171717;">
 
                         <children>
 
-                            <Label layoutX="50"
-                                   layoutY="40"
-                                   text="Resumen General"
-                                   styleClass="header-title"/>
+                            <Label layoutX="50" layoutY="40" styleClass="header-title" text="Resumen General" />
 
-                            <Label layoutX="50"
-                                   layoutY="120"
-                                   text="Total Recaudado"
-                                   styleClass="label-gold"/>
+                            <Label layoutX="50" layoutY="120" styleClass="label-gold" text="Total Recaudado" />
 
-                            <Label fx:id="lblTotalRecaudado"
-                                   layoutX="50"
-                                   layoutY="160"
-                                   text="0"
-                                   styleClass="total-label"/>
+                            <Label fx:id="lblTotalRecaudado" layoutX="50" layoutY="160" styleClass="total-label" text="0" />
 
                         </children>
 
@@ -89,93 +62,49 @@
 
                 <!-- BARBEROS -->
 
-                <Tab fx:id="tabBarberos"
-                     text="Barberos">
+                <Tab fx:id="tabBarberos" text="Barberos">
 
                     <AnchorPane style="-fx-background-color:#171717;">
 
                         <children>
 
-                            <Label layoutX="30"
-                                   layoutY="30"
-                                   text="Nombre"
-                                   styleClass="label-gold"/>
+                            <Label layoutX="30" layoutY="30" styleClass="label-gold" text="Nombre" />
 
-                            <TextField fx:id="txtNombreBarbero"
-                                       layoutX="120"
-                                       layoutY="25"
-                                       prefWidth="250"/>
+                            <TextField fx:id="txtNombreBarbero" layoutX="120" layoutY="25" prefWidth="250" />
 
-                            <Label layoutX="30"
-                                   layoutY="80"
-                                   text="Correo"
-                                   styleClass="label-gold"/>
+                            <Label layoutX="30" layoutY="80" styleClass="label-gold" text="Correo" />
 
-                            <TextField fx:id="txtTelefonoBarbero"
-                                       layoutX="120"
-                                       layoutY="75"
-                                       prefWidth="250"/>
+                            <TextField fx:id="txtTelefonoBarbero" layoutX="120" layoutY="75" prefWidth="250" />
 
-                            <Button text="Agregar"
-                                    layoutX="30"
-                                    layoutY="130"
-                                    onAction="#agregarBarbero"/>
+                            <Button layoutX="30" layoutY="130" onAction="#agregarBarbero" text="Agregar" />
 
-                            <Button text="Editar"
-                                    layoutX="140"
-                                    layoutY="130"
-                                    onAction="#editarBarbero"/>
+                            <Button layoutX="140" layoutY="130" onAction="#editarBarbero" text="Editar" />
 
-                            <Button text="Eliminar"
-                                    layoutX="250"
-                                    layoutY="130"
-                                    onAction="#eliminarBarbero"/>
+                            <Button layoutX="250" layoutY="130" onAction="#eliminarBarbero" text="Eliminar" />
 
-                            <Button text="Contratar"
-                                    layoutX="360"
-                                    layoutY="130"
-                                    onAction="#contratarBarbero"/>
+                            <Button layoutX="360" layoutY="130" onAction="#contratarBarbero" text="Contratar" />
 
-                            <Button text="Despedir"
-                                    layoutX="480"
-                                    layoutY="130"
-                                    onAction="#despedirBarbero"/>
+                            <Button layoutX="480" layoutY="130" onAction="#despedirBarbero" text="Despedir" />
 
-                            <TableView fx:id="tablaBarberos"
-                                       layoutX="30"
-                                       layoutY="200"
-                                       prefWidth="500"
-                                       prefHeight="350">
+                            <TableView fx:id="tablaBarberos" layoutX="30" layoutY="200" prefHeight="350" prefWidth="500">
 
                                 <columns>
 
-                                    <TableColumn fx:id="colNombreBarbero"
-                                                 text="Nombre"
-                                                 prefWidth="250"/>
+                                    <TableColumn fx:id="colNombreBarbero" prefWidth="250" text="Nombre" />
 
-                                    <TableColumn fx:id="colTelefonoBarbero"
-                                                 text="Correo"
-                                                 prefWidth="250"/>
+                                    <TableColumn fx:id="colTelefonoBarbero" prefWidth="250" text="Correo" />
 
                                 </columns>
 
                             </TableView>
 
-                            <TableView fx:id="tablaContratados"
-                                       layoutX="600"
-                                       layoutY="200"
-                                       prefWidth="500"
-                                       prefHeight="350">
+                            <TableView fx:id="tablaContratados" layoutX="600" layoutY="200" prefHeight="350" prefWidth="500">
 
                                 <columns>
 
-                                    <TableColumn fx:id="colNombreContratado"
-                                                 text="Nombre"
-                                                 prefWidth="250"/>
+                                    <TableColumn fx:id="colNombreContratado" prefWidth="250" text="Nombre" />
 
-                                    <TableColumn fx:id="colTelefonoContratado"
-                                                 text="Correo"
-                                                 prefWidth="250"/>
+                                    <TableColumn fx:id="colTelefonoContratado" prefWidth="250" text="Correo" />
 
                                 </columns>
 
@@ -195,29 +124,17 @@
 
                         <children>
 
-                            <TableView fx:id="tablaClientes"
-                                       layoutX="20"
-                                       layoutY="20"
-                                       prefWidth="900"
-                                       prefHeight="400">
+                            <TableView fx:id="tablaClientes" layoutX="20" layoutY="20" prefHeight="400" prefWidth="900">
 
                                 <columns>
 
-                                    <TableColumn fx:id="colIdCliente"
-                                                 text="ID"
-                                                 prefWidth="200"/>
+                                    <TableColumn fx:id="colIdCliente" prefWidth="200" text="ID" />
 
-                                    <TableColumn fx:id="colNombreCliente"
-                                                 text="Nombre"
-                                                 prefWidth="250"/>
+                                    <TableColumn fx:id="colNombreCliente" prefWidth="250" text="Nombre" />
 
-                                    <TableColumn fx:id="colTelefonoCliente"
-                                                 text="Telefono"
-                                                 prefWidth="200"/>
+                                    <TableColumn fx:id="colTelefonoCliente" prefWidth="200" text="Telefono" />
 
-                                    <TableColumn fx:id="colCorreoCliente"
-                                                 text="Correo"
-                                                 prefWidth="250"/>
+                                    <TableColumn fx:id="colCorreoCliente" prefWidth="250" text="Correo" />
 
                                 </columns>
 
@@ -230,68 +147,35 @@
                 </Tab>
                 <!-- SERVICIOS -->
 
-                <Tab fx:id="tabServicios"
-                     text="Servicios">
+                <Tab fx:id="tabServicios" text="Servicios">
 
                     <AnchorPane style="-fx-background-color:#171717;">
 
                         <children>
 
-                            <Label layoutX="30"
-                                   layoutY="30"
-                                   text="Servicio"
-                                   styleClass="label-gold"/>
+                            <Label layoutX="30" layoutY="30" styleClass="label-gold" text="Servicio" />
 
-                            <TextField fx:id="txtNombreServicio"
-                                       layoutX="120"
-                                       layoutY="25"
-                                       prefWidth="250"/>
+                            <TextField fx:id="txtNombreServicio" layoutX="120" layoutY="25" prefWidth="250" />
 
-                            <Label layoutX="30"
-                                   layoutY="80"
-                                   text="Precio"
-                                   styleClass="label-gold"/>
+                            <Label layoutX="30" layoutY="80" styleClass="label-gold" text="Precio" />
 
-                            <TextField fx:id="txtPrecioServicio"
-                                       layoutX="120"
-                                       layoutY="75"
-                                       prefWidth="250"/>
+                            <TextField fx:id="txtPrecioServicio" layoutX="120" layoutY="75" prefWidth="250" />
 
-                            <Button text="Agregar"
-                                    layoutX="30"
-                                    layoutY="130"
-                                    onAction="#agregarServicio"/>
+                            <Button layoutX="30" layoutY="130" onAction="#agregarServicio" text="Agregar" />
 
-                            <Button text="Editar"
-                                    layoutX="150"
-                                    layoutY="130"
-                                    onAction="#editarServicio"/>
+                            <Button layoutX="150" layoutY="130" onAction="#editarServicio" text="Editar" />
 
-                            <Button text="Eliminar"
-                                    layoutX="270"
-                                    layoutY="130"
-                                    onAction="#eliminarServicio"/>
+                            <Button layoutX="270" layoutY="130" onAction="#eliminarServicio" text="Eliminar" />
 
-                            <Button text="Reservar"
-                                    layoutX="390"
-                                    layoutY="130"
-                                    onAction="#reservarServicio"/>
+                            <Button layoutX="390" layoutY="130" onAction="#reservarServicio" text="Reservar" />
 
-                            <TableView fx:id="tablaServicios"
-                                       layoutX="30"
-                                       layoutY="200"
-                                       prefWidth="1050"
-                                       prefHeight="330">
+                            <TableView fx:id="tablaServicios" layoutX="30" layoutY="200" prefHeight="330" prefWidth="1050">
 
                                 <columns>
 
-                                    <TableColumn fx:id="colNombreServicio"
-                                                 text="Servicio"
-                                                 prefWidth="500"/>
+                                    <TableColumn fx:id="colNombreServicio" prefWidth="500" text="Servicio" />
 
-                                    <TableColumn fx:id="colPrecioServicio"
-                                                 text="Precio"
-                                                 prefWidth="550"/>
+                                    <TableColumn fx:id="colPrecioServicio" prefWidth="550" text="Precio" />
 
                                 </columns>
 
@@ -305,8 +189,58 @@
 
                 <!-- CITAS -->
 
-                <Tab fx:id="tabCitas"
-                     text="Citas">
+                <Tab fx:id="tabCitas" text="Citas">
+                    <HBox spacing="20" style="-fx-background-color:#171717; -fx-padding:20;">
+        
+                        <!-- Formulario izquierdo -->
+                        <VBox prefWidth="250" spacing="12" style="-fx-background-color:#FFF8E1; -fx-border-color:#FBC02D; -fx-border-width:2; -fx-padding:20;">
+                            <Label style="-fx-font-weight:bold; -fx-font-size:14;" text="AGENDAR CITA" />
+                            <Label text="Barbero" />
+                            <ComboBox fx:id="cbBarbero" prefWidth="200" />
+                            <Label text="Servicio" />
+                            <ComboBox fx:id="cbServicio" prefWidth="200" />
+                            <Label text="Fecha" />
+                            <DatePicker fx:id="dpFecha" prefWidth="200" />
+                            <Label text="Hora" />
+                            <ComboBox fx:id="cbHora" prefWidth="200" />
+                            <Button onAction="#agendarCita" prefHeight="40" prefWidth="200" style="-fx-background-color:#FF9800; -fx-text-fill:white; -fx-font-weight:bold;" text="AGENDAR" />
+                        </VBox>
+
+                        <!-- Tabla derecha -->
+                        <VBox spacing="10" HBox.hgrow="ALWAYS">
+                            <Label style="-fx-font-size:24; -fx-text-fill:white;" text="Agenda del día" />
+                            <TableView fx:id="citas" prefHeight="500" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn fx:id="BarHora" prefWidth="100" text="Hora" />
+                                    <TableColumn fx:id="BarCliente" prefWidth="150" text="Cliente" />
+                                    <TableColumn fx:id="BarServicio" prefWidth="150" text="Servicio" />
+                                    <TableColumn fx:id="BarEstado" prefWidth="100" text="Estado" />
+                                    <TableColumn fx:id="BarAccion" prefWidth="100" text="Accion" />
+                                </columns>
+                            </TableView>
+                        </VBox>
+
+                    </HBox>
+                </Tab>
+                <!-- VENTAS -->
+
+                <Tab fx:id="tabVentas" text="Ventas">
+
+                    <AnchorPane style="-fx-background-color:#171717;">
+
+                        <children>
+
+                            <TableView fx:id="tablaVentas" layoutX="30" layoutY="30" prefHeight="500" prefWidth="1050" />
+
+                        </children>
+
+                    </AnchorPane>
+
+                </Tab>
+                
+                <!-- Ver CITAS -->
+
+                <Tab fx:id="taCitas" text=" ver Citas">
 
                     <AnchorPane style="-fx-background-color:#171717;">
 
@@ -320,12 +254,14 @@
                                 </padding>
                             </Label>
                             <HBox spacing="10">
-                                <DatePicker fx:id="dpFecha">
+                                <DatePicker fx:id="dFecha">
+                                   
                                     <HBox.margin>
                                         <Insets left="200.0" />
                                     </HBox.margin>
                                 </DatePicker>
-                                <Button style="-fx-cursor: hand;" text="Filtrar" textAlignment="CENTER">
+                                <Button onAction="#filtrarPorFecha" style="-fx-cursor: hand;" text="Filtrar" textAlignment="CENTER">
+                                    
                                     <padding>
                                         <Insets left="15.0" />
                                     </padding>
@@ -334,17 +270,17 @@
                                     </HBox.margin>
                                 </Button>
                             </HBox>
-                            <TableView fx:id="citas" cache="true" prefHeight="400.0" prefWidth="632.0" style="-fx-background-color: #171717;">
+                            <TableView fx:id="Tacitas" cache="true" prefHeight="400.0" prefWidth="632.0" style="-fx-background-color: #171717;">
                                 <columns>
-                                    <TableColumn fx:id="BarHora" text="Hora" />
+                                    <TableColumn fx:id="BaHora" text="Hora" />
      
-                                    <TableColumn fx:id="BarCliente" text="Cliente" />
+                                    <TableColumn fx:id="BaCliente" text="Cliente" />
       
-                                    <TableColumn fx:id="BarServicio" text="Servicio" />
+                                    <TableColumn fx:id="BaServicio" text="Servicio" />
        
-                                    <TableColumn fx:id="BarEstado" text="Estado" />
+                                    <TableColumn fx:id="BaEstado" text="Estado" />
       
-                                    <TableColumn fx:id="BarAccion" text="Accion" />
+                                    <TableColumn fx:id="BaAccion" prefWidth="144.0" text="Accion" />
                                 </columns>
                                 <VBox.margin>
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -356,55 +292,27 @@
 
                 </Tab>
 
-                <!-- VENTAS -->
-
-                <Tab fx:id="tabVentas"
-                     text="Ventas">
-
-                    <AnchorPane style="-fx-background-color:#171717;">
-
-                        <children>
-
-                            <TableView fx:id="tablaVentas"
-                                       layoutX="30"
-                                       layoutY="30"
-                                       prefWidth="1050"
-                                       prefHeight="500"/>
-
-                        </children>
-
-                    </AnchorPane>
-
-                </Tab>
+                
 
                 <!-- LIQUIDACIONES -->
 
-                <Tab fx:id="tabLiquidaciones"
-                     text="Liquidaciones">
+                <Tab fx:id="tabLiquidaciones" text="Liquidaciones">
 
                     <AnchorPane>
 
                         <children>
 
-                            <TableView fx:id="tablaLiquidaciones"
-                                       layoutX="20"
-                                       layoutY="20"
-                                       prefWidth="900"
-                                       prefHeight="400">
+                            <TableView fx:id="tablaLiquidaciones" layoutX="20" layoutY="20" prefHeight="400" prefWidth="900">
 
                                 <columns>
 
-                                    <TableColumn fx:id="colBarberoLiquidacion"
-                                                 text="Barbero"/>
+                                    <TableColumn fx:id="colBarberoLiquidacion" text="Barbero" />
 
-                                    <TableColumn fx:id="colTotalProducido"
-                                                 text="Producido"/>
+                                    <TableColumn fx:id="colTotalProducido" text="Producido" />
 
-                                    <TableColumn fx:id="colComision"
-                                                 text="Comisión"/>
+                                    <TableColumn fx:id="colComision" text="Comisión" />
 
-                                    <TableColumn fx:id="colPagoFinal"
-                                                 text="Pago Final"/>
+                                    <TableColumn fx:id="colPagoFinal" text="Pago Final" />
 
                                 </columns>
 
@@ -422,28 +330,19 @@
 
                         <children>
 
-                            <TableView fx:id="tablaHistorial"
-                                       layoutX="20"
-                                       layoutY="20"
-                                       prefWidth="1000"
-                                       prefHeight="450">
+                            <TableView fx:id="tablaHistorial" layoutX="20" layoutY="20" prefHeight="450" prefWidth="1000">
 
                                 <columns>
 
-                                    <TableColumn fx:id="colFecha"
-                                                 text="Fecha"/>
+                                    <TableColumn fx:id="colFecha" text="Fecha" />
 
-                                    <TableColumn fx:id="colCliente"
-                                                 text="Cliente"/>
+                                    <TableColumn fx:id="colCliente" text="Cliente" />
 
-                                    <TableColumn fx:id="colBarbero"
-                                                 text="Barbero"/>
+                                    <TableColumn fx:id="colBarbero" text="Barbero" />
 
-                                    <TableColumn fx:id="colServicio"
-                                                 text="Servicio"/>
+                                    <TableColumn fx:id="colServicio" text="Servicio" />
 
-                                    <TableColumn fx:id="colValor"
-                                                 text="Valor"/>
+                                    <TableColumn fx:id="colValor" text="Valor" />
 
                                 </columns>
 
@@ -461,25 +360,17 @@
 
                         <children>
 
-                            <TableView fx:id="tablaFacturas"
-                                       layoutX="20"
-                                       layoutY="20"
-                                       prefWidth="900"
-                                       prefHeight="400">
+                            <TableView fx:id="tablaFacturas" layoutX="20" layoutY="20" prefHeight="400" prefWidth="900">
 
                                 <columns>
 
-                                    <TableColumn fx:id="colFacturaId"
-                                                 text="ID"/>
+                                    <TableColumn fx:id="colFacturaId" text="ID" />
 
-                                    <TableColumn fx:id="colFacturaCliente"
-                                                 text="Cliente"/>
+                                    <TableColumn fx:id="colFacturaCliente" text="Cliente" />
 
-                                    <TableColumn fx:id="colFacturaFecha"
-                                                 text="Fecha"/>
+                                    <TableColumn fx:id="colFacturaFecha" text="Fecha" />
 
-                                    <TableColumn fx:id="colFacturaTotal"
-                                                 text="Total"/>
+                                    <TableColumn fx:id="colFacturaTotal" text="Total" />
 
                                 </columns>
 

@@ -4,18 +4,25 @@
  */
 package com.example.barber.modelo;
 
+import java.util.UUID;
+
 
 /**
  *
  * @author DURLEY
  */
 public class CitasDTO {
+
     private String hora;
-private String cliente;
-private String servicio;
-private String estado;
-private String barbero;
-private String fecha;
+    private String cliente;
+    private String servicio;
+    private String estado;
+    private String barbero;
+    private String fecha;
+    private String id;
+
+    public CitasDTO() {
+    }
 
     public CitasDTO(String hora, String cliente, String servicio, String estado, String barbero, String fecha) {
         this.hora = hora;
@@ -24,6 +31,7 @@ private String fecha;
         this.estado = estado;
         this.barbero = barbero;
         this.fecha = fecha;
+        this.id = UUID.randomUUID().toString();
     }
 
     public String getHora() {
@@ -73,5 +81,13 @@ private String fecha;
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
-    
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 }

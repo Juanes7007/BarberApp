@@ -20,6 +20,7 @@ public class GestionUsuarios {
             List<Usuario> defecto = new ArrayList<>();
             defecto.add(new Usuario("01", "admin", "1234", "ADMIN", "none", true));
             defecto.add(new Usuario("02", "juanes", "barber2026", "BARBER", "none", true));
+            
             guardarUsuarios(defecto);
             return defecto;
         }

@@ -1,5 +1,7 @@
 package com.example.barber.controlador;
 
+import com.example.barber.modelo.CitasDTO;
+import com.example.barber.modelo.GestionCitas;
 import com.example.barber.modelo.GestionUsuarios;
 import com.example.barber.modelo.Usuario;
 import com.example.barber.modelo.Servicio;
@@ -24,8 +26,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableCell;
+import javafx.scene.layout.HBox;
 
 public class AdminController implements Initializable {
 
@@ -49,14 +57,28 @@ public class AdminController implements Initializable {
 
     @FXML
     private Tab tabLiquidaciones;
-    
+
     @FXML
     private Tab tabHistorial;
 
-     @FXML
+    @FXML
     private Tab tabCitas;
-      
-    
+
+    @FXML
+    private ComboBox<String> cbBarbero;
+
+    @FXML
+    private ComboBox<String> cbServicio;
+
+    @FXML
+    private ComboBox<String> cbHora;
+
+    @FXML
+    private DatePicker dpFecha;
+
+    @FXML
+    private DatePicker dFecha;
+
     @FXML
     private Tab tabReportes;
     @FXML
@@ -104,6 +126,39 @@ public class AdminController implements Initializable {
     @FXML
     private Label lblEstado;
 
+    @FXML
+    private TableView<CitasDTO> citas;
+
+    @FXML
+    private TableColumn<CitasDTO, String> BarHora;
+
+    @FXML
+    private TableColumn<CitasDTO, String> BarCliente;
+
+    @FXML
+    private TableColumn<CitasDTO, String> BarServicio;
+
+    @FXML
+    private TableColumn<CitasDTO, String> BarEstado;
+
+    @FXML
+    private TableView<CitasDTO> Tacitas;
+
+    @FXML
+    private TableColumn<CitasDTO, String> BaHora;
+
+    @FXML
+    private TableColumn<CitasDTO, String> BaCliente;
+
+    @FXML
+    private TableColumn<CitasDTO, String> BaServicio;
+
+    @FXML
+    private TableColumn<CitasDTO, String> BaEstado;
+
+    @FXML
+    private TableColumn<CitasDTO, Void> BaAccion;
+
     private ObservableList<Usuario> listaBarberos
             = FXCollections.observableArrayList();
 
@@ -115,6 +170,15 @@ public class AdminController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        for (Usuario u : GestionUsuarios.obtenerUsuarios()) {
+            System.out.println(
+                    u.getUsername()
+                    + " | "
+                    + u.getPassword()
+                    + " | "
+                    + u.getTipo()
+            );
+        }
 
         Usuario usuario = Sesion.getUsuarioActual();
 
@@ -141,8 +205,7 @@ public class AdminController implements Initializable {
                     tabPanePrincipal.getTabs().remove(tabBarberos);
                     tabPanePrincipal.getTabs().remove(tabReportes);
                     tabPanePrincipal.getTabs().remove(tabLiquidaciones);
-                     tabPanePrincipal.getTabs().remove(tabClientes);
-                       tabPanePrincipal.getTabs().remove(tabCitas);
+
                     break;
             }
             tablaBarberos.getSelectionModel()
@@ -200,9 +263,105 @@ public class AdminController implements Initializable {
             listaContratados.add(contratadoPorDefecto);
 
             tablaContratados.setItems(listaContratados);
+
+            cargarCitas();
+            cargarComboBoxCitas();
+
+            BaHora.setCellValueFactory(
+                    new PropertyValueFactory<>("hora"));
+
+            BaCliente.setCellValueFactory(
+                    new PropertyValueFactory<>("cliente"));
+
+            BaServicio.setCellValueFactory(
+                    new PropertyValueFactory<>("servicio"));
+
+            BaEstado.setCellValueFactory(new PropertyValueFactory<>("estado"));
+
+            BaAccion.setCellFactory(col -> new TableCell<CitasDTO, Void>() {
+
+                private final Button btnCompletar = new Button("Completar");
+                private final Button btnCancelar = new Button("Cancelar");
+
+                private final HBox box = new HBox(10, btnCompletar, btnCancelar);
+
+                {
+                    btnCompletar.setStyle("-fx-background-color: green; -fx-text-fill: white;");
+                    btnCancelar.setStyle("-fx-background-color: red; -fx-text-fill: white;");
+
+                    btnCompletar.setOnAction(e -> {
+                        CitasDTO cita = getTableView().getItems().get(getIndex());
+
+                        // Modifica el objeto que YA ESTÁ en la tabla
+                        cita.setEstado("Completado");
+
+                        // Ahora guarda al archivo
+                        List<CitasDTO> lista = GestionCitas.obtenerCitas();
+                        for (CitasDTO c : lista) {
+                            if (c.getId().equals(cita.getId())) {
+                                c.setEstado("Completado");
+                                break;
+                            }
+                        }
+                        GestionCitas.guardarCitas(lista);
+
+                        Tacitas.refresh(); // Ahora sí refresca porque el objeto en memoria ya cambió
+                    });
+
+                    btnCancelar.setOnAction(e -> {
+
+                        CitasDTO cita = getTableView().getItems().get(getIndex());
+
+                        cita.setEstado("Completado");
+
+                        // Ahora guarda al archivo
+                        List<CitasDTO> lista = GestionCitas.obtenerCitas();
+                        for (CitasDTO c : lista) {
+                            if (c.getId().equals(cita.getId())) {
+                                c.setEstado("Completado");
+                                break;
+                            }
+                        }
+                        GestionCitas.guardarCitas(lista);
+
+                        Tacitas.refresh(); //ojo dañan esto mamones
+                    });
+                }
+
+                @Override
+                protected void updateItem(Void item, boolean empty) {
+                    super.updateItem(item, empty);
+
+                    if (empty) {
+                        setGraphic(null);
+                        return;
+                    }
+
+                    CitasDTO cita = getTableView().getItems().get(getIndex());
+
+                    if (cita == null) {
+                        setGraphic(null);
+                        return;
+                    }
+
+                    String estado = cita.getEstado();
+
+                    if (estado == null || estado.isBlank()) {
+                        estado = "Pendiente";
+                        cita.setEstado("Pendiente");
+                    }
+
+                    boolean esPendiente = estado.equals("Pendiente");
+
+                    btnCompletar.setDisable(!esPendiente);
+                    btnCancelar.setDisable(!esPendiente);
+
+                    setGraphic(box);
+                }
+            });
         }
     }
-    
+
     @FXML
     private void cerrarSesion(ActionEvent event) {
 
@@ -227,10 +386,10 @@ public class AdminController implements Initializable {
         } catch (Exception e) {
 
             e.printStackTrace();
-            lblEstado.setText("Error al cerrar sesión");
+            lblEstado.setText("Error al cerrar sesiÃ³n");
         }
     }
-    
+
     @FXML
     private void reservarServicio(ActionEvent event) {
 
@@ -510,5 +669,118 @@ public class AdminController implements Initializable {
         }
 
         lblTotalRecaudado.setText("$ " + total);
+    }
+
+    private void cargarCitas() {
+        BarHora.setCellValueFactory(new PropertyValueFactory<>("hora"));
+        BarCliente.setCellValueFactory(new PropertyValueFactory<>("cliente"));
+        BarServicio.setCellValueFactory(new PropertyValueFactory<>("servicio"));
+        BarEstado.setCellValueFactory(new PropertyValueFactory<>("estado"));
+
+        List<CitasDTO> todas = GestionCitas.obtenerCitas();
+        ObservableList<CitasDTO> lista = FXCollections.observableArrayList();
+        String tipo = Sesion.getUsuarioActual().getTipo();
+        for (CitasDTO cita : todas) {
+
+            if (tipo.equals("ADMIN")) {
+
+                lista.add(cita);
+
+            } else if (Sesion.getUsuarioActual()
+                    .getUsername()
+                    .equals(cita.getBarbero())) {
+
+                lista.add(cita);
+            }
+        }
+        citas.setItems(lista);
+
+    }
+
+    private void cargarComboBoxCitas() {
+
+        cbBarbero.getItems().clear();
+
+        for (Usuario u : GestionUsuarios.obtenerUsuarios()) {
+
+            if (u.getTipo().equalsIgnoreCase("BARBER")) {
+                cbBarbero.getItems().add(u.getUsername());
+            }
+        }
+
+        cbServicio.getItems().clear();
+
+        cbServicio.getItems().addAll(
+                "Corte",
+                "Barba",
+                "Corte + Barba"
+        );
+
+        cbHora.getItems().addAll(
+                "9:00 AM", "10:00 AM", "11:00 AM",
+                "12:00 PM", "1:00 PM", "2:00 PM",
+                "3:00 PM", "4:00 PM", "5:00 PM",
+                "6:00 PM", "7:00 PM", "8:00 PM"
+        );
+    }
+
+    @FXML
+    private void filtrarPorFecha() {
+
+        if (dFecha.getValue() == null) {
+            cargarCitas();
+            return;
+        }
+
+        String fechaSeleccionada = dFecha.getValue().toString();
+
+        Usuario usuario = Sesion.getUsuarioActual();
+
+        ObservableList<CitasDTO> lista
+                = FXCollections.observableArrayList();
+
+        for (CitasDTO cita : GestionCitas.obtenerCitas()) {
+
+            if (cita.getBarbero().equals(usuario.getUsername())
+                    && cita.getFecha().equals(fechaSeleccionada)) {
+
+                lista.add(cita);
+            }
+        }
+
+        Tacitas.setItems(lista);
+
+    }
+
+    @FXML
+    private void agendarCita() {
+        if (cbBarbero.getValue() == null
+                || cbServicio.getValue() == null
+                || cbHora.getValue() == null
+                || dpFecha.getValue() == null) {
+            lblEstado.setText("Por favor completa todos los campos.");
+            return;
+        }
+        if (!GestionCitas.VerificarDisponibilidad(dpFecha.getValue().toString(), cbHora.getValue())) {
+            lblEstado.setText("Esa hora ya esta ocupada, elige otra.");
+            return;
+        }
+        CitasDTO nuevaCita = new CitasDTO(
+                cbHora.getValue(),
+                Sesion.getUsuarioActual().getUsername(),
+                cbServicio.getValue(),
+                "",
+                cbBarbero.getValue(),
+                dpFecha.getValue().toString()
+        );
+        List<CitasDTO> citasGuardadas = GestionCitas.obtenerCitas();
+        citasGuardadas.add(nuevaCita);
+        GestionCitas.guardarCitas(citasGuardadas);
+        cbBarbero.getSelectionModel().selectFirst();
+        cbServicio.getSelectionModel().selectFirst();
+        cbHora.getSelectionModel().selectFirst();
+        dpFecha.setValue(null);
+        lblEstado.setText("¡Cita agendada!");
+        cargarCitas();
     }
 }

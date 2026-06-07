@@ -56,6 +56,22 @@ public class GestionCitas {
         return true;
     }
     
-    
+    public static void actualizarCita(CitasDTO citaActualizada) {
+
+    List<CitasDTO> lista = obtenerCitas();
+
+    for (int i = 0; i < lista.size(); i++) {
+
+        if (lista.get(i).getId() != null &&
+            lista.get(i).getId().equals(citaActualizada.getId())) {
+
+            lista.set(i, citaActualizada);
+            break;
+        }
+    }
+
+    guardarCitas(lista);
+}    
+        
 
 }

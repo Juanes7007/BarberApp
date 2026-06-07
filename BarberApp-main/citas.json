@@ -1,0 +1,164 @@
+[
+  {
+    "hora": "4:00 PM",
+    "cliente": "pepitogay",
+    "servicio": "Barba",
+    "estado": "Completado",
+    "barbero": "julian",
+    "fecha": "2026-06-29",
+    "id": "d51af1f0-301c-40a0-9d5f-c335c9691088"
+  },
+  {
+    "hora": "11:00 AM",
+    "cliente": "pepitogay",
+    "servicio": "Barba",
+    "estado": "Cancelado",
+    "barbero": "julian",
+    "fecha": "2026-06-11",
+    "id": "873a6375-a72c-4051-a07c-45010789620e"
+  },
+  {
+    "hora": "11:00 AM",
+    "cliente": "admin",
+    "servicio": "Corte + Barba",
+    "estado": "Cancelado",
+    "barbero": "julian",
+    "fecha": "2026-06-08",
+    "id": "0fc4cd5d-ab44-46c0-b8ba-34979d9420e4"
+  },
+  {
+    "hora": "10:00 AM",
+    "cliente": "admin",
+    "servicio": "Corte",
+    "estado": "Cancelado",
+    "barbero": "julian",
+    "fecha": "2026-06-16",
+    "id": "03362845-5f51-4e2b-a785-6583074f695a"
+  },
+  {
+    "hora": "2:00 PM",
+    "cliente": "admin",
+    "servicio": "Barba",
+    "estado": "Cancelado",
+    "barbero": "julian",
+    "fecha": "2026-06-02",
+    "id": "d501b5f1-6698-43ee-bb1f-e59cce31c7c9"
+  },
+  {
+    "hora": "2:00 PM",
+    "cliente": "admin",
+    "servicio": "Corte + Barba",
+    "estado": "Completado",
+    "barbero": "julian",
+    "fecha": "2026-06-05",
+    "id": "3de933d3-9fb0-42bf-9410-0aced69b343f"
+  },
+  {
+    "hora": "12:00 PM",
+    "cliente": "julian",
+    "servicio": "Corte",
+    "estado": "Cancelado",
+    "barbero": "julian",
+    "fecha": "2026-06-06",
+    "id": "7a457bd4-e88f-47ca-acb7-f27f04f83069"
+  },
+  {
+    "hora": "11:00 AM",
+    "cliente": "admin",
+    "servicio": "Corte",
+    "estado": "Completado",
+    "barbero": "julian",
+    "fecha": "2026-06-10",
+    "id": "8c48de6c-277d-4b46-9381-9d12dc74e158"
+  },
+  {
+    "hora": "12:00 PM",
+    "cliente": "admin",
+    "servicio": "Barba",
+    "estado": "Cancelado",
+    "barbero": "julian",
+    "fecha": "2026-06-09",
+    "id": "dac3ef63-c721-4f35-9092-acbc6ddfded5"
+  },
+  {
+    "hora": "12:00 PM",
+    "cliente": "admin",
+    "servicio": "Corte + Barba",
+    "estado": "Completado",
+    "barbero": "julian",
+    "fecha": "2026-06-22",
+    "id": "884a3075-561f-4d75-943d-ee5df8ab4ade"
+  },
+  {
+    "hora": "11:00 AM",
+    "cliente": "admin",
+    "servicio": "Barba",
+    "estado": "Completado",
+    "barbero": "julian",
+    "fecha": "2026-06-15",
+    "id": "a4ea16f9-9fa6-42dd-b2eb-8011ba61b269"
+  },
+  {
+    "hora": "1:00 PM",
+    "cliente": "admin",
+    "servicio": "Corte",
+    "estado": "Completado",
+    "barbero": "LICHECACORRO",
+    "fecha": "2026-06-29",
+    "id": "71044f63-f845-4919-9d07-198cbb5742d3"
+  },
+  {
+    "hora": "10:00 AM",
+    "cliente": "admin",
+    "servicio": "Corte + Barba",
+    "estado": "Completado",
+    "barbero": "julian",
+    "fecha": "2026-07-01",
+    "id": "279e91fd-cad4-4fa4-9659-400c85e2d692"
+  },
+  {
+    "hora": "11:00 AM",
+    "cliente": "admin",
+    "servicio": "Barba",
+    "estado": "Cancelado",
+    "barbero": "julian",
+    "fecha": "2026-07-02",
+    "id": "7d182293-8035-42ca-98d2-742bada6c53f"
+  },
+  {
+    "hora": "12:00 PM",
+    "cliente": "admin",
+    "servicio": "Corte",
+    "estado": "Completado",
+    "barbero": "julian",
+    "fecha": "2026-06-15",
+    "id": "57c3733d-9d31-4bad-bc25-04a54faf780e"
+  },
+  {
+    "hora": "1:00 PM",
+    "cliente": "admin",
+    "servicio": "Barba",
+    "estado": "Completado",
+    "barbero": "julian",
+    "fecha": "2026-06-27",
+    "id": "2d4f449d-3c0d-486b-ad1e-450643839172"
+  },
+  {
+    "hora": "6:00 PM",
+    "cliente": "admin",
+    "servicio": "Corte",
+    "estado": "Completado",
+    "barbero": "julian",
+    "fecha": "2026-06-23",
+    "id": "e5a5d183-611a-4a4c-bcff-53437ae1b5df"
+  },
+  {
+    "hora": "11:00 AM",
+    "cliente": "admin",
+    "servicio": "Barba",
+    "estado": "Completado",
+    "barbero": "julian",
+    "fecha": "2026-06-01",
+    "id": "75d0352d-db18-4fd0-8388-2133e5e3111b"
+  }
+]
