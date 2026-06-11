@@ -34,6 +34,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableCell;
 import javafx.scene.layout.HBox;
+import javafx.stage.StageStyle;
 
 public class AdminController implements Initializable {
 
@@ -375,6 +376,7 @@ public class AdminController implements Initializable {
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+             stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
 
             Stage actual
@@ -389,11 +391,7 @@ public class AdminController implements Initializable {
         }
     }
 
-    @FXML
-    private void reservarServicio(ActionEvent event) {
-
-        lblEstado.setText("Servicio reservado");
-    }
+    
 
     private void cargarBarberos() {
 
@@ -685,15 +683,17 @@ public class AdminController implements Initializable {
 
                 lista.add(cita);
 
-            } else if (Sesion.getUsuarioActual()
-                    .getUsername()
-                    .equals(cita.getBarbero())) {
+            } else if (Sesion.getUsuarioActual().getUsername().equals(cita.getCliente())) {
 
                 lista.add(cita);
             }
+            if((Sesion.getUsuarioActual().getUsername().equals(cita.getBarbero()))){
+                lista.add(cita); 
+            }
         }
         citas.setItems(lista);
-
+        
+    
     }
 
     private void cargarComboBoxCitas() {
