@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controlador.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controlador.LoginController">
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -26,9 +26,14 @@
    <right>
       <AnchorPane prefHeight="200.0" prefWidth="374.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="62.0" fitWidth="72.0" layoutX="155.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgcandado" fitHeight="62.0" fitWidth="72.0" layoutX="155.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/candado.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgcandadoAbierto" fitHeight="62.0" fitWidth="72.0" layoutX="155.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@img/candadoAbierto.png" />
                </image>
             </ImageView>
             <Label layoutX="48.0" layoutY="145.0" text="Usuario" textFill="#ffc900">
@@ -36,26 +41,43 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="48.0" layoutY="219.0" prefHeight="27.0" prefWidth="103.0" text="Contraseña" textFill="#ffc900">
+            <Label layoutX="48.0" layoutY="219.0" prefHeight="27.0" prefWidth="103.0" text="Contrase単a" textFill="#ffc900">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
             <TextField fx:id="username" layoutX="160.0" layoutY="146.0" promptText="nombre de usuario" />
-            <PasswordField fx:id="password" layoutX="161.0" layoutY="220.0" promptText="Contraseña" />
+            <PasswordField fx:id="password" layoutX="161.0" layoutY="220.0" promptText="Contrase単a" />
+            <TextField fx:id="passwordvisible" layoutX="161.0" layoutY="220.0" promptText="Contrase単a" visible="false" />
             <Button fx:id="btnentrar" layoutX="137.0" layoutY="293.0" mnemonicParsing="false" onAction="#userLogIn" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #ffc900;" text="Entrar">
-               <!-- <cursor>
+               <cursor>
                   <Cursor fx:constant="HAND" />
-               </cursor -->
+               </cursor>
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
             <Label fx:id="lblErrorLogin" layoutX="161.0" layoutY="119.0" textFill="RED" />
             <Label fx:id="btnRegistrarseCliente" layoutX="217.0" layoutY="368.0" onMouseClicked="#userRegister" style="-fx-underline: true;" text="Registrarse como cliente" textFill="#13ebff">
-             <!--  <cursor>
+               <cursor>
                   <Cursor fx:constant="HAND" />
-               </cursor -->
+               </cursor>
             </Label>
+            <Label fx:id="btncerrar" layoutX="339.0" layoutY="14.0" onMouseClicked="#cerrarPrograma" text="X" textFill="RED">
+               <font>
+                  <Font name="Roboto Bold" size="25.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="320.0" layoutY="223.0" onMouseClicked="#verContrasena" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/eye.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
          </children>
       </AnchorPane>
    </right>

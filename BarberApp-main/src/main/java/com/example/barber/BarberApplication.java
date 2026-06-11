@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.stage.StageStyle;
 
 public class BarberApplication extends Application {
 
@@ -18,7 +19,7 @@ public class BarberApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 700, 500);
 
         scene.getStylesheets().add(BarberApplication.class.getResource("style.css").toExternalForm());
-
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("BarberControl - Panel Administrativo");
         stage.setScene(scene);
         stage.setResizable(false);
@@ -26,6 +27,6 @@ public class BarberApplication extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(); ///dddddd
     }
 }

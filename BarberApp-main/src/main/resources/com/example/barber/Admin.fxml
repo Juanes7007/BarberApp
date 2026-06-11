@@ -167,8 +167,6 @@
 
                             <Button layoutX="270" layoutY="130" onAction="#eliminarServicio" text="Eliminar" />
 
-                            <Button layoutX="390" layoutY="130" onAction="#reservarServicio" text="Reservar" />
-
                             <TableView fx:id="tablaServicios" layoutX="30" layoutY="200" prefHeight="330" prefWidth="1050">
 
                                 <columns>

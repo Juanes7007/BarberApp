@@ -160,5 +160,68 @@
     "barbero": "julian",
     "fecha": "2026-06-01",
     "id": "75d0352d-db18-4fd0-8388-2133e5e3111b"
+  },
+  {
+    "hora": "11:00 AM",
+    "cliente": "pepitogay",
+    "servicio": "Corte + Barba",
+    "estado": "",
+    "barbero": "julian",
+    "fecha": "2026-06-04",
+    "id": "a6edb72e-33e2-4376-878a-c6019c23418d"
+  },
+  {
+    "hora": "9:00 AM",
+    "cliente": "pepitogay",
+    "servicio": "Corte",
+    "estado": "",
+    "barbero": "AndresitoMamador",
+    "fecha": "2026-06-02",
+    "id": "58a78990-4ac6-49dd-aa4a-a4bab034dfaf"
+  },
+  {
+    "hora": "1:00 PM",
+    "cliente": "admin",
+    "servicio": "Barba",
+    "estado": "",
+    "barbero": "julian",
+    "fecha": "2026-06-05",
+    "id": "a2f33559-4688-4769-9e1d-daab551757b1"
+  },
+  {
+    "hora": "9:00 AM",
+    "cliente": "admin",
+    "servicio": "Corte",
+    "estado": "",
+    "barbero": "AndresitoMamador",
+    "fecha": "2026-06-27",
+    "id": "504e72ea-55c6-470d-ba0b-2fae29feca62"
+  },
+  {
+    "hora": "1:00 PM",
+    "cliente": "admin",
+    "servicio": "Barba",
+    "estado": "Completado",
+    "barbero": "julian",
+    "fecha": "2026-06-28",
+    "id": "6d706815-1993-430c-bfcb-ad2c8d848b52"
+  },
+  {
+    "hora": "3:00 PM",
+    "cliente": "admin",
+    "servicio": "Corte + Barba",
+    "estado": "Completado",
+    "barbero": "julian",
+    "fecha": "2026-06-12",
+    "id": "b4cdb6b9-e5d6-475f-9aaa-128613a498c0"
+  },
+  {
+    "hora": "6:00 PM",
+    "cliente": "pepitogay",
+    "servicio": "Corte + Barba",
+    "estado": "Completado",
+    "barbero": "LICHECACORRO",
+    "fecha": "2026-06-12",
+    "id": "73a596d3-b3e6-4a16-970b-728a40c9bedc"
   }
 ]
